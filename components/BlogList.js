@@ -1,6 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setNotification } from '../reducers/notifReducer'
+import { useSelector } from 'react-redux'
 import Blog from './Blog'
 
 const Blogs = () => {

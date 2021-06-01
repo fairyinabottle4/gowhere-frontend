@@ -29,7 +29,6 @@ export const loginUser = ( username, password ) => {
 }
 
 export const setCurrUser = (user) => {
-  console.log(user)
   return {
     type: 'SET_CURRENT_USER',
     data: user

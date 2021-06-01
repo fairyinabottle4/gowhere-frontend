@@ -6,15 +6,11 @@ import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
 import blogService from './services/blogs'
 import { useDispatch, useSelector } from 'react-redux'
-import { setNotification } from './reducers/notifReducer'
-import { setCurrUser, loginUser } from './reducers/currUserReducer'
-import { addLike, initBlogs, createBlog, removeBlog } from './reducers/blogsReducer'
+import { setCurrUser } from './reducers/currUserReducer'
+import { initBlogs } from './reducers/blogsReducer'
 
 
 const App = () => {
-  const [newBlogTitle, setNewBlogTitle] = useState('')
-  const [newBlogAuthor, setNewBlogAuthor] = useState('')
-  const [newBlogUrl, setNewBlogUrl] = useState('')
   const user = useSelector(state => state.currUser)
 
   const dispatch = useDispatch()
@@ -34,48 +30,9 @@ const App = () => {
 
   const blogFormRef = useRef()
 
-  const addBlog = async (event) => {
-    blogFormRef.current.toggleVisibility()
-    event.preventDefault()
-    const blogObject = {
-      title: newBlogTitle,
-      author: newBlogAuthor,
-      url: newBlogUrl
-    }
-
-    const newBlog = await blogService.create(blogObject)
-    dispatch(createBlog(newBlog))
-    dispatch(setNotification(`A new blog ${newBlogTitle} by ${newBlogAuthor}`, 5))
-    setNewBlogTitle('')
-    setNewBlogAuthor('')
-    setNewBlogUrl('')
-  }
-
-  const handleTitleChange = (event) => {
-    setNewBlogTitle(event.target.value)
-  }
-
-  const handleAuthorChange = (event) => {
-    setNewBlogAuthor(event.target.value)
-  }
-
-  const handleUrlChange = (event) => {
-    setNewBlogUrl(event.target.value)
-  }
-
-
-
   const blogForm = () => (
     <Togglable buttonLabel="new blog" ref={blogFormRef}>
-      <NewblogForm
-        addBlog={addBlog}
-        newBlogTitle={newBlogTitle}
-        newBlogAuthor={newBlogAuthor}
-        newBlogUrl={newBlogUrl}
-        handleTitleChange={handleTitleChange}
-        handleAuthorChange={handleAuthorChange}
-        handleUrlChange={handleUrlChange}
-      />
+      <NewblogForm />
 
     </Togglable>
   )
@@ -86,7 +43,6 @@ const App = () => {
     dispatch(setCurrUser(null))
     return <LoginForm />
   }
-
 
   return (
     <div>
