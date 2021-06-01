@@ -1,3 +1,10 @@
+import {
+  Table,
+  TableBody,
+  TableContainer,
+  TableRow,
+  Paper,
+} from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Blog from './Blog'
@@ -7,10 +14,18 @@ const Blogs = () => {
   const sortedBlogs = blogs.sort((a,b) => b.likes - a.likes)
   return (
     <div>
-      {sortedBlogs.map(blog => <Blog
-        key={blog.id}
-        blog={blog}
-      />)}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+              {sortedBlogs.map(blog => 
+              <TableRow key={blog.id}>
+                  <Blog blog={blog} />
+              </TableRow>
+              
+              )}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   )
 }

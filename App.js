@@ -8,6 +8,7 @@ import blogService from './services/blogs'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrUser } from './reducers/currUserReducer'
 import { initBlogs } from './reducers/blogsReducer'
+import Container from '@material-ui/core/Container'
 
 
 const App = () => {
@@ -45,22 +46,24 @@ const App = () => {
   }
 
   return (
-    <div>
-      {notification !== '' ? <Notification /> : null}
-      {user === null ?
-        <LoginForm /> :
-        <div>
-          <h2>blogs</h2>
-          <p>{user.name} logged in</p>
-          <button onClick={handleLogout}>logout</button>
-          <BlogList />
-          <h2>create new</h2>
-          {blogForm()}
+    <Container>
+      <div>
+        {notification !== '' ? <Notification /> : null}
+        {user === null ?
+          <LoginForm /> :
+          <div>
+            <h2>blogs</h2>
+            <p>{user.name} logged in</p>
+            <button onClick={handleLogout}>logout</button>
+            <BlogList />
+            <h2>create new</h2>
+            {blogForm()}
 
-        </div>
-      }
-
+          </div>
+        }
     </div>
+
+  </Container>
   )
 }
 

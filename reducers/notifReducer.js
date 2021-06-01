@@ -10,6 +10,9 @@ const notifReducer = (state = '', action) => {
   }
   
   export const setNotification = (content) => {
+    //one possibility is to have different types of notification, sent as a second parameter,
+    //which will determine the format of the notification. As this is not required now,
+    //this is not implemented here
     const duration = 5
     if (window.notificationTimeout) {
       window.clearTimeout(window.notificationTimeout)

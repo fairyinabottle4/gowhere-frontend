@@ -2,6 +2,10 @@ import React, {useRef} from 'react'
 import Togglable from './Togglable'
 import BlogDetails from './BlogDetails'
 import PropTypes from 'prop-types'
+import {
+  TableCell,
+} from '@material-ui/core'
+
 
 const Blog = ({blog}) => {
   const blogStyle = {
@@ -16,7 +20,8 @@ const Blog = ({blog}) => {
 
   return (
   <div style={blogStyle} className='blog'>
-    <p className='blog-title-author'>{blog.title} {blog.author} </p>
+    <TableCell className='blog-title-author'>{blog.title} </TableCell>
+    <TableCell>{blog.author}</TableCell>
     <Togglable buttonLabel="view" ref={blogDetailsRef}>
       <BlogDetails key={blog.id} blog={blog} />
     </Togglable>
