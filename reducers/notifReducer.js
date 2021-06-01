@@ -1,16 +1,16 @@
 const notifReducer = (state = '', action) => {
-    switch(action.type) {
-      case 'SET_NOTIF':
-        console.log(action.data)
-        return action.data
-      case 'REMOVE':
-        return null    
-      default:
-        return state
+  switch(action.type) {
+    case 'SET_NOTIF':
+      return action.data
+    case 'REMOVE':
+      return null    
+    default:
+      return state
     }
   }
   
-  export const setNotification = (content, duration) => {
+  export const setNotification = (content) => {
+    const duration = 5
     if (window.notificationTimeout) {
       window.clearTimeout(window.notificationTimeout)
     }

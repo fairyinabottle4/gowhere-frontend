@@ -4,7 +4,7 @@ import Blog from './Blog'
 
 const Blogs = () => {
   const blogs = useSelector(state => state.blogs)
-  const sortedBlogs = blogs.sort((a,b) => b.votes - a.votes)
+  const sortedBlogs = blogs.sort((a,b) => b.likes - a.likes)
   return (
     <div>
       {sortedBlogs.map(blog => <Blog

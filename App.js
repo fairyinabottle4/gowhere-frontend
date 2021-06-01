@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import BlogList from './components/BlogList'
 import Notification from './components/Notification'
 import NewblogForm from './components/NewblogForm'
@@ -12,7 +12,7 @@ import { initBlogs } from './reducers/blogsReducer'
 
 const App = () => {
   const user = useSelector(state => state.currUser)
-
+  const notification = useSelector(state => state.notification)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -46,8 +46,7 @@ const App = () => {
 
   return (
     <div>
-      <Notification />
-
+      {notification !== '' ? <Notification /> : null}
       {user === null ?
         <LoginForm /> :
         <div>

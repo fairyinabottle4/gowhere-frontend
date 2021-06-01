@@ -24,7 +24,7 @@ const NewBlogForm = () => {
 
     const newBlog = await blogService.create(blogObject)
     dispatch(createBlog(newBlog))
-    dispatch(setNotification(`A new blog ${newBlogTitle} by ${newBlogAuthor}`, 5))
+    dispatch(setNotification(`A new blog ${newBlogTitle} by ${newBlogAuthor}`))
     setNewBlogTitle('')
     setNewBlogAuthor('')
     setNewBlogUrl('')

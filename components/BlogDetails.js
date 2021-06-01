@@ -14,12 +14,9 @@ const BlogDetails = ({blog}) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
       dispatch(addLike(blogId, blogObject))
-      // setMessage(`A new blog ${newBlogTitle} by ${newBlogAuthor}`)
-      // setTimeout(() => {
-      //   setMessage(null)
-      // }, 5000)
+      dispatch(setNotification(`One like added to ${updatedBlog.title}`))
     } catch (exception) {
-      dispatch(setNotification("Could not update blog", 5))
+      dispatch(setNotification("Could not update blog"))
     }
   }
 
@@ -29,15 +26,12 @@ const BlogDetails = ({blog}) => {
       console.log(response.status)
       if (response.status === 204) {
         dispatch(removeBlog(blogId))
-        // setMessage(`Blog deleted`)
-        // setTimeout(() => {
-        //   setMessage(null)
-        // }, 5000)  
+        dispatch(setNotification(`Blog ${blog.title} deleted`))
       } else {
-        dispatch(setNotification("Could not delete blog", 5))
+        dispatch(setNotification("Could not delete blog"))
       }
     } catch (exception) {
-      dispatch(setNotification("Could not delete blog", 5))
+      dispatch(setNotification("Could not delete blog"))
     }
   }
 
