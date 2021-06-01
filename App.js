@@ -6,7 +6,7 @@ import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
 import blogService from './services/blogs'
 import loginService from './services/login' 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setNotification } from './reducers/notifReducer'
 import { setCurrUser, loginUser } from './reducers/currUserReducer'
 import { addLike, initBlogs, createBlog, removeBlog } from './reducers/blogsReducer'
@@ -16,8 +16,7 @@ const App = () => {
   const [newBlogTitle, setNewBlogTitle] = useState('')
   const [newBlogAuthor, setNewBlogAuthor] = useState('')
   const [newBlogUrl, setNewBlogUrl] = useState('')
-  //user state needs to go into redux store
-  const [user, setUser] = useState(null)
+  const user = useSelector(state => state.currUser)
 
   const dispatch = useDispatch()
 
@@ -29,7 +28,7 @@ const App = () => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
-      setUser(user)
+      dispatch(setCurrUser(user))
       blogService.setToken(user.token)
     }
   }, [])  
@@ -101,8 +100,6 @@ const App = () => {
     event.preventDefault()
     const username = event.target.username.value
     const password = event.target.password.value
-    console.log(username)
-    console.log(password)
     dispatch(loginUser(username, password))
   }
 
@@ -124,7 +121,7 @@ const App = () => {
   const handleLogout = () => {
     window.localStorage.removeItem('loggedNoteappUser')
     window.localStorage.clear()
-    setUser(null)
+    dispatch(setCurrUser(null))
     return <LoginForm handleLogin={handleLogin} />
   }
 
