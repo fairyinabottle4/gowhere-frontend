@@ -3,6 +3,7 @@ import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notifReducer'
 import { createBlog } from '../reducers/blogsReducer'
+import { Button, TextField } from '@material-ui/core'
 
 const NewBlogForm = () => {
 
@@ -45,28 +46,28 @@ const NewBlogForm = () => {
   return (
   <form onSubmit={addBlog} id="create">
     <div>
-      Title:
-      <input
+      <TextField     
+        label='title' 
         value={newBlogTitle}
         onChange={handleTitleChange}
-        id="Title"
-      />
+        id="Title">
+      </TextField>
       <br/>
-      Author:
-      <input
+      <TextField         
+        label='author'
         value={newBlogAuthor}
         onChange={handleAuthorChange}
-        id="Author"
-      />
+        id="Author">
+      </TextField>
       <br/>
-      Url:
-      <input
+      <TextField
+        label='Url'
         value={newBlogUrl}
         onChange={handleUrlChange}
-        id="Url"
-      />
+        id="Url">
+      </TextField>
     </div>
-    <button type="submit">create</button>
+    <Button variant='contained' color='primary' type="submit">create</Button>
   </form>  
 )}
 

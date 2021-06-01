@@ -4,7 +4,7 @@ import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { addLike, removeBlog } from '../reducers/blogsReducer'
 import { setNotification } from '../reducers/notifReducer'
-
+import { Button, Link } from '@material-ui/core'
 
 const BlogDetails = ({blog}) => {
 
@@ -49,13 +49,13 @@ const BlogDetails = ({blog}) => {
   
   return (
     <div className='blog-details'>
-      <p>{blog.url}</p>
-      <p>
+      <Link href={blog.url}>{blog.url}</Link>
+      <h2>
         {blog.likes}
-        <button onClick={handleLike} className='blog-like'>like</button>
-      </p>
-      <p>{blog.user.name}</p>
-      <button onClick={handleDelete}>remove</button>
+        <Button size='small' variant='contained' color='secondary' onClick={handleLike} className='blog-like'>like</Button>
+      </h2>
+      <h3>{blog.user.name}</h3>
+      <Button size='small' variant='contained' color='inherit' onClick={handleDelete}>remove</Button>
     </div>
   )
 }
