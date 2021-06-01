@@ -5,7 +5,6 @@ import NewblogForm from './components/NewblogForm'
 import LoginForm from './components/LoginForm'
 import Togglable from './components/Togglable'
 import blogService from './services/blogs'
-import loginService from './services/login' 
 import { useDispatch, useSelector } from 'react-redux'
 import { setNotification } from './reducers/notifReducer'
 import { setCurrUser, loginUser } from './reducers/currUserReducer'
@@ -52,37 +51,6 @@ const App = () => {
     setNewBlogUrl('')
   }
 
-  const updateBlog = async (blogId, blogObject) => {
-    try {
-      const updatedBlog = await blogService.update(blogId, blogObject)
-      dispatch(addLike(blogId, blogObject))
-      // setMessage(`A new blog ${newBlogTitle} by ${newBlogAuthor}`)
-      // setTimeout(() => {
-      //   setMessage(null)
-      // }, 5000)
-    } catch (exception) {
-      dispatch(setNotification("Could not update blog", 5))
-    }
-  }
-
-  const deleteBlog = async (blogId) => {
-    try {
-      const response = await blogService.remove(blogId)
-      console.log(response.status)
-      if (response.status === 204) {
-        dispatch(removeBlog(blogId))
-        // setMessage(`Blog deleted`)
-        // setTimeout(() => {
-        //   setMessage(null)
-        // }, 5000)  
-      } else {
-        dispatch(setNotification("Could not delete blog", 5))
-      }
-    } catch (exception) {
-      dispatch(setNotification("Could not delete blog", 5))
-    }
-  }
-
   const handleTitleChange = (event) => {
     setNewBlogTitle(event.target.value)
   }
@@ -96,12 +64,6 @@ const App = () => {
   }
 
 
-  const handleLogin = (event) => {
-    event.preventDefault()
-    const username = event.target.username.value
-    const password = event.target.password.value
-    dispatch(loginUser(username, password))
-  }
 
   const blogForm = () => (
     <Togglable buttonLabel="new blog" ref={blogFormRef}>
@@ -122,7 +84,7 @@ const App = () => {
     window.localStorage.removeItem('loggedNoteappUser')
     window.localStorage.clear()
     dispatch(setCurrUser(null))
-    return <LoginForm handleLogin={handleLogin} />
+    return <LoginForm />
   }
 
 
@@ -131,12 +93,12 @@ const App = () => {
       <Notification />
 
       {user === null ?
-        <LoginForm handleLogin={handleLogin} /> :
+        <LoginForm /> :
         <div>
           <h2>blogs</h2>
           <p>{user.name} logged in</p>
           <button onClick={handleLogout}>logout</button>
-          <BlogList updateBlog={updateBlog} deleteBlog={deleteBlog}/>
+          <BlogList />
           <h2>create new</h2>
           {blogForm()}
 

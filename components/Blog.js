@@ -3,7 +3,7 @@ import Togglable from './Togglable'
 import BlogDetails from './BlogDetails'
 import PropTypes from 'prop-types'
 
-const Blog = ({blog, updateBlog, deleteBlog}) => {
+const Blog = ({blog}) => {
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -18,7 +18,7 @@ const Blog = ({blog, updateBlog, deleteBlog}) => {
   <div style={blogStyle} className='blog'>
     <p className='blog-title-author'>{blog.title} {blog.author} </p>
     <Togglable buttonLabel="view" ref={blogDetailsRef}>
-      <BlogDetails key={blog.id} blog={blog} updateBlog={updateBlog} deleteBlog={deleteBlog}/>
+      <BlogDetails key={blog.id} blog={blog} />
     </Togglable>
   </div>)  
 }

@@ -1,39 +1,21 @@
 import React, {useState} from 'react'
-import loginService from '../services/login' 
-import blogService from '../services/blogs'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../reducers/currUserReducer'
 
 
-const LoginForm = ({handleLogin}) => {
+const LoginForm = () => {
+
+  const dispatch = useDispatch()
 
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('')   
-  // const [user, setUser] = useState(null)
-  // const [message, setMessage] = useState(null)
 
-  // const handleLogin = async (event) => {
-  //   event.preventDefault()
-  //   const username = event.target.username.value
-  //   const password = event.target.password.value
-  //   try {
-  //     const user = await loginService.login({
-  //       username, password,
-  //     })
-  //     window.localStorage.setItem(
-  //       'loggedBlogappUser', JSON.stringify(user)
-  //     ) 
-
-  //     blogService.setToken(user.token)
-  //     setUser(user)
-  //     setUsername('')
-  //     setPassword('')
-  //   } catch (exception) {
-  //     setMessage('Wrong credentials')
-  //     setTimeout(() => {
-  //       setMessage(null)
-  //     }, 5000)
-  //   }
-  // }
-
+  const handleLogin = (event) => {
+    event.preventDefault()
+    const username = event.target.username.value
+    const password = event.target.password.value
+    dispatch(loginUser(username, password))
+  }
 
   return(
     <form onSubmit={handleLogin}>
