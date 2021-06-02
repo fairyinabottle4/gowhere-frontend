@@ -8,14 +8,14 @@ import currUserReducer from './reducers/currUserReducer'
 import userReducer from './reducers/usersReducer'
 
 const reducer = combineReducers({
-    blogs: blogsReducer,
-    notification: notifReducer,
-    currUser: currUserReducer,
-    users: userReducer
+  blogs: blogsReducer,
+  notification: notifReducer,
+  currUser: currUserReducer,
+  users: userReducer
 })
 
 const store = createStore(reducer, composeWithDevTools(
-    applyMiddleware(thunk)
+  applyMiddleware(thunk)
 ))
 
 export default store

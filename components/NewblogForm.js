@@ -3,6 +3,7 @@ import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notifReducer'
 import { createBlog } from '../reducers/blogsReducer'
+import { initializeUsers } from '../reducers/usersReducer'
 import { Button, TextField } from '@material-ui/core'
 
 const NewBlogForm = () => {
@@ -14,17 +15,16 @@ const NewBlogForm = () => {
   const dispatch = useDispatch()
 
   const addBlog = async (event) => {
-    console.log(newBlogTitle)
-    console.log(newBlogAuthor)
     event.preventDefault()
     const blogObject = {
       title: newBlogTitle,
       author: newBlogAuthor,
-      url: newBlogUrl
+      url: newBlogUrl,
+      comments: []
     }
-
     const newBlog = await blogService.create(blogObject)
     dispatch(createBlog(newBlog))
+    dispatch(initializeUsers())
     dispatch(setNotification(`A new blog ${newBlogTitle} by ${newBlogAuthor}`))
     setNewBlogTitle('')
     setNewBlogAuthor('')

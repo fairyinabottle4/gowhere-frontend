@@ -2,7 +2,7 @@ import blogService from '../services/blogs'
 
 const reducer = (state = [], action) => {  
     switch(action.type) {
-      case 'INCREMENT':
+      case 'ADD_LIKE':
         const id = action.data.id
         const toChange = state.find(n => n.id === id)
         const changedBlog = {
@@ -16,6 +16,10 @@ const reducer = (state = [], action) => {
         return action.data  
       case 'DELETE_BLOG':
         return state.filter(b => b.id !== action.data.id)
+      case 'ADD_COMMENT':
+        const newID = action.data.id
+        const newBlog = action.data.changedBlog
+        return state.map(a => a.id !== newID ? a : newBlog)
       default:
         return state
     }
@@ -24,8 +28,17 @@ const reducer = (state = [], action) => {
 export const addLike = (id) => {
   return async dispatch => {
     dispatch({
-      type: 'INCREMENT',
+      type: 'ADD_LIKE',
       data: { id }
+    })
+  }
+}
+
+export const updateComment = (id, changedBlog) => {
+  return async dispatch => {
+    dispatch({
+      type: 'ADD_COMMENT',
+      data: { id, changedBlog }
     })
   }
 }
@@ -52,7 +65,6 @@ export const createBlog = (newBlog) => {
 } 
 
 export const removeBlog = (id) => {
-  console.log("hello")
   return async dispatch => {
     dispatch({
       type: 'DELETE_BLOG',

@@ -11,11 +11,11 @@ test('check details in the blog form', () => {
 
 
     const component = render(<NewblogForm
-        addBlog={addBlog}
-        handleAuthorChange={author_change_stub}
-        handleTitleChange={title_change_stub}
-        handleUrlChange={url_change_stub}
-    />)
+      addBlog={addBlog}
+      handleAuthorChange={author_change_stub}
+      handleTitleChange={title_change_stub}
+      handleUrlChange={url_change_stub}/>
+    )
 
     const title = component.container.querySelector('#Title')
     const author = component.container.querySelector('#Author')

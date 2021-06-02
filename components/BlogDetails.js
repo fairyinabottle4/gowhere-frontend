@@ -4,6 +4,7 @@ import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { addLike, removeBlog } from '../reducers/blogsReducer'
 import { setNotification } from '../reducers/notifReducer'
+import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
 
 const BlogDetails = ({blog}) => {
@@ -23,9 +24,9 @@ const BlogDetails = ({blog}) => {
   const deleteBlog = async (blogId) => {
     try {
       const response = await blogService.remove(blogId)
-      console.log(response.status)
       if (response.status === 204) {
         dispatch(removeBlog(blogId))
+        dispatch(initializeUsers())
         dispatch(setNotification(`Blog ${blog.title} deleted`))
       } else {
         dispatch(setNotification("Could not delete blog"))
@@ -42,7 +43,6 @@ const BlogDetails = ({blog}) => {
   }
 
   const handleDelete = () => {
-    //user total must also be deleted
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
       deleteBlog(blog.id)
     }

@@ -13,8 +13,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
   Switch, Route, Link,
-  useParams,
-  useHistory
 } from "react-router-dom"
 import { setCurrUser } from './reducers/currUserReducer'
 import { initBlogs } from './reducers/blogsReducer'
@@ -27,7 +25,6 @@ const App = () => {
   const user = useSelector(state => state.currUser)
   const notification = useSelector(state => state.notification)
 
-  const userList = useSelector(state => state.users)
   const dispatch = useDispatch()
 
   useEffect(() => {
