@@ -3,11 +3,11 @@ import BlogList from './components/BlogList'
 import Notification from './components/Notification'
 import NewblogForm from './components/NewblogForm'
 import LoginForm from './components/LoginForm'
-import Users from './components/Users'
 import Menu from './components/Menu'
 import About from './components/About'
 import Togglable from './components/Togglable'
 import BlogPage from './components/BlogPage'
+import UserPage from './components/User'
 import blogService from './services/blogs'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -79,6 +79,9 @@ const App = () => {
               <Switch>
                 <Route path='/blogs/:id'>
                   <BlogPage />
+                </Route>
+                <Route path='/users/:id'>
+                  <UserPage />
                 </Route>
                 <Route path='/users'>
                   <UsersTable />
