@@ -5,6 +5,12 @@ import PropTypes from 'prop-types'
 import {
   TableCell,
 } from '@material-ui/core'
+import {
+  BrowserRouter as Router,
+  Switch, Route, Link,
+  useParams,
+  useHistory
+} from "react-router-dom"
 
 
 const Blog = ({blog}) => {
@@ -20,7 +26,11 @@ const Blog = ({blog}) => {
 
   return (
   <div style={blogStyle} className='blog'>
-    <TableCell className='blog-title-author'>{blog.title} </TableCell>
+    <TableCell className='blog-title-author'>
+      <Link to={`/blogs/${blog.id}`}>
+      {blog.title} 
+      </Link>
+    </TableCell>
     <TableCell>{blog.author}</TableCell>
     <Togglable buttonLabel="view" ref={blogDetailsRef}>
       <BlogDetails key={blog.id} blog={blog} />

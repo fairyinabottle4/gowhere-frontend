@@ -7,6 +7,7 @@ import Users from './components/Users'
 import Menu from './components/Menu'
 import About from './components/About'
 import Togglable from './components/Togglable'
+import BlogPage from './components/BlogPage'
 import blogService from './services/blogs'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -62,7 +63,7 @@ const App = () => {
     dispatch(setCurrUser(null))
     return <LoginForm />
   }
-
+  
   return (
     <Router>
       <Container>
@@ -76,6 +77,9 @@ const App = () => {
               <p>{user.name} logged in</p>
               <button onClick={handleLogout}>logout</button>
               <Switch>
+                <Route path='/blogs/:id'>
+                  <BlogPage />
+                </Route>
                 <Route path='/users'>
                   <UsersTable />
                 </Route>
