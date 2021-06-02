@@ -3,21 +3,38 @@ import BlogList from './components/BlogList'
 import Notification from './components/Notification'
 import NewblogForm from './components/NewblogForm'
 import LoginForm from './components/LoginForm'
+import Users from './components/Users'
+import Menu from './components/Menu'
+import About from './components/About'
 import Togglable from './components/Togglable'
 import blogService from './services/blogs'
 import { useDispatch, useSelector } from 'react-redux'
+import {
+  BrowserRouter as Router,
+  Switch, Route, Link,
+  useParams,
+  useHistory
+} from "react-router-dom"
 import { setCurrUser } from './reducers/currUserReducer'
 import { initBlogs } from './reducers/blogsReducer'
-import Container from '@material-ui/core/Container'
+import { initializeUsers } from './reducers/usersReducer'
+import UsersTable from './components/UsersTable'
 
+import Container from '@material-ui/core/Container'
 
 const App = () => {
   const user = useSelector(state => state.currUser)
   const notification = useSelector(state => state.notification)
+
+  const userList = useSelector(state => state.users)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(initBlogs())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(initializeUsers())
   }, [dispatch])
 
   useEffect(() => {
@@ -28,6 +45,7 @@ const App = () => {
       blogService.setToken(user.token)
     }
   }, [])  
+
 
   const blogFormRef = useRef()
 
@@ -46,24 +64,42 @@ const App = () => {
   }
 
   return (
-    <Container>
-      <div>
-        {notification !== '' ? <Notification /> : null}
-        {user === null ?
-          <LoginForm /> :
-          <div>
-            <h2>blogs</h2>
-            <p>{user.name} logged in</p>
-            <button onClick={handleLogout}>logout</button>
-            <BlogList />
-            <h2>create new</h2>
-            {blogForm()}
+    <Router>
+      <Container>
+        <div>
+          {notification !== '' ? <Notification /> : null}
+          {user === null ?
+            <LoginForm /> :
+            <div>
+              <h2>blogs</h2>
+              <Menu />
+              <p>{user.name} logged in</p>
+              <button onClick={handleLogout}>logout</button>
+              <Switch>
+                <Route path='/users'>
+                  <UsersTable />
+                </Route>
+                <Route path='/blogs'>
+                  <BlogList/>
+                </Route>
+                <Route path='/create-new'>
+                  <h2>create new</h2>
+                  {blogForm()}
+                </Route>
+                <Route path='/about'>
+                  <About />
+                </Route>
+                <Route path='/'>
+                  <p>this is the home page. More to follow....</p>
+                </Route>
+              </Switch>
+            </div>
+          }
+      </div>
 
-          </div>
-        }
-    </div>
+      </Container>
 
-  </Container>
+    </Router>
   )
 }
 

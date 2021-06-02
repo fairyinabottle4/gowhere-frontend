@@ -42,6 +42,7 @@ const BlogDetails = ({blog}) => {
   }
 
   const handleDelete = () => {
+    //user total must also be deleted
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
       deleteBlog(blog.id)
     }
