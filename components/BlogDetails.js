@@ -41,7 +41,7 @@ const BlogDetails = ({blog}) => {
     // const updatedBlog = {...blog, likes: blog.likes + 1}
     // updateBlog(blog.id, updatedBlog)
     const newBlog = await blogService.create(blog)
-    dispatch(createBlog(newBlog))
+    // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }
 
