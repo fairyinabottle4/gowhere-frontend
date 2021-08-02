@@ -56,7 +56,6 @@ const BlogDetails = ({blog}) => {
       </h2>
       <p>{blog.description}</p>
       <img src={blog.imageUrl} alt={"Image could not be loaded"} />
-      <h3>{blog.user.name}</h3>
       <Button size='small' variant='contained' color='inherit' onClick={handleDelete}>remove</Button>
     </div>
   )
