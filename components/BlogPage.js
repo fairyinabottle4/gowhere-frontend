@@ -14,6 +14,7 @@ const BlogPage = () => {
   const [newComment, setNewComment] = useState('')
   
   const dispatch = useDispatch()
+  //possible bug here, need to refesh the list of blogs
   const blogs = useSelector(state => state.blogs)
 
   const id = useParams().id

@@ -47,7 +47,6 @@ const BlogDetails = ({blog}) => {
       deleteBlog(blog.id)
     }
   }
-  
   return (
     <div className='blog-details'>
       <Link href={blog.url}>{blog.url}</Link>
@@ -55,6 +54,8 @@ const BlogDetails = ({blog}) => {
         {blog.likes}
         <Button size='small' variant='contained' color='secondary' onClick={handleLike} className='blog-like'>like</Button>
       </h2>
+      <p>{blog.description}</p>
+      <img src={blog.imageUrl} alt={"Image could not be loaded"} />
       <h3>{blog.user.name}</h3>
       <Button size='small' variant='contained' color='inherit' onClick={handleDelete}>remove</Button>
     </div>
