@@ -2,13 +2,11 @@ import blogService from '../services/blogs'
 
 const reducer = (state = [], action) => {  
     switch(action.type) {
-      case 'ADD_LIKE':
+      case 'TOGGLE_LIKE':
         const id = action.data.id
         const toChange = state.find(n => n.id === id)
-        const changedBlog = {
-          ...toChange,
-          likes: toChange.likes + 1
-        }
+        const changedBlog = action.data.newBlog
+        console.log(changedBlog)
         return state.map(a => a.id !== id ? a : changedBlog)
       case 'NEW_BLOG':
         return [...state, action.data].sort((a,b) => a.votes-b.votes)
@@ -25,11 +23,11 @@ const reducer = (state = [], action) => {
     }
 }
 
-export const addLike = (id) => {
+export const toggleLike = (id, newBlog) => {
   return async dispatch => {
     dispatch({
-      type: 'ADD_LIKE',
-      data: { id }
+      type: 'TOGGLE_LIKE',
+      data: { id, newBlog }
     })
   }
 }

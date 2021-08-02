@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
-import { addLike, createBlog, removeBlog } from '../reducers/blogsReducer'
+import { toggleLike, createBlog, removeBlog } from '../reducers/blogsReducer'
 import { setNotification } from '../reducers/notifReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
@@ -11,11 +11,14 @@ const BlogDetails = ({blog}) => {
 
   const dispatch = useDispatch()
 
+  const liked = blog.liked
+
   const updateBlog = async (blogId, blogObject) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
-      dispatch(addLike(blogId, blogObject))
-      dispatch(setNotification(`One like added to ${updatedBlog.title}`))
+      console.log(updatedBlog)
+      dispatch(toggleLike(blogId, updatedBlog))
+      // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
     } catch (exception) {
       dispatch(setNotification("Could not update blog"))
     }
@@ -38,12 +41,21 @@ const BlogDetails = ({blog}) => {
 
 
   const handleLike = async () => {
-    // const updatedBlog = {...blog, likes: blog.likes + 1}
-    // updateBlog(blog.id, updatedBlog)
+    const updatedBlog = {...blog, liked: !blog.liked}
+    updateBlog(blog.id, updatedBlog)
     const newBlog = await blogService.create(blog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }
+
+  // const handleBeenThere = async () => {
+  //   // const updatedBlog = {...blog, likes: blog.likes + 1}
+  //   // updateBlog(blog.id, updatedBlog)
+  //   const newBlog = await blogService.create(blog)
+  //   // dispatch(createBlog(newBlog))
+  //   dispatch(initializeUsers())
+  // }
+
 
   const handleDelete = () => {
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
@@ -55,7 +67,11 @@ const BlogDetails = ({blog}) => {
       <Link href={blog.url}>{blog.url}</Link>
       <h2>
         {blog.likes}
-        <Button size='small' variant='contained' color='secondary' onClick={handleLike} className='blog-like'>like</Button>
+        <Button 
+          size='small' variant='contained' 
+          color={liked ? 'secondary' : 'primary'} 
+          onClick={handleLike} className='blog-like'>{liked ? 'unlike' : "like"}
+        </Button>
       </h2>
       <p>{blog.description}</p>
       <img src={blog.imageUrl} alt={"Image could not be loaded"} />
