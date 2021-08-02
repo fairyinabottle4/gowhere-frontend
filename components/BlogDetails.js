@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
-import { addLike, removeBlog } from '../reducers/blogsReducer'
+import { addLike, createBlog, removeBlog } from '../reducers/blogsReducer'
 import { setNotification } from '../reducers/notifReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
@@ -37,9 +37,12 @@ const BlogDetails = ({blog}) => {
   }
 
 
-  const handleLike = () => {
-    const updatedBlog = {...blog, likes: blog.likes + 1}
-    updateBlog(blog.id, updatedBlog)
+  const handleLike = async () => {
+    // const updatedBlog = {...blog, likes: blog.likes + 1}
+    // updateBlog(blog.id, updatedBlog)
+    const newBlog = await blogService.create(blog)
+    dispatch(createBlog(newBlog))
+    dispatch(initializeUsers())
   }
 
   const handleDelete = () => {

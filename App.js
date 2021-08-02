@@ -9,6 +9,7 @@ import Togglable from './components/Togglable'
 import BlogPage from './components/BlogPage'
 import UserPage from './components/User'
 import blogService from './services/blogs'
+import Homepage from './components/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
@@ -44,13 +45,11 @@ const App = () => {
     }
   }, [])  
 
-
   const blogFormRef = useRef()
-
+  //this should be moved to a separate component
   const blogForm = () => (
     <Togglable buttonLabel="new blog" ref={blogFormRef}>
       <NewblogForm />
-
     </Togglable>
   )
 
@@ -94,7 +93,7 @@ const App = () => {
                   <About />
                 </Route>
                 <Route path='/'>
-                  <p>this is the home page. More to follow....</p>
+                  <Homepage user={user} />
                 </Route>
               </Switch>
             </div>
