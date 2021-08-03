@@ -43,7 +43,7 @@ const LikedItem = (props) => {
       if (window.confirm(`Remove blog ${likedPlace.title}?`)) {
       deleteBlog(likedPlaceId)
       const parent = likedPlace.parent
-      const updatedParentBlog = {parent, liked: !parent.liked}
+      const updatedParentBlog = {...parent, liked: !parent.liked}
       updateBlog(parent.id, updatedParentBlog)
       }
   }
