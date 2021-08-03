@@ -16,7 +16,6 @@ const BlogDetails = ({blog}) => {
   const updateBlog = async (blogId, blogObject) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
-      console.log(updatedBlog)
       dispatch(toggleLike(blogId, updatedBlog))
       // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
     } catch (exception) {
@@ -41,9 +40,15 @@ const BlogDetails = ({blog}) => {
 
 
   const handleLike = async () => {
-    const updatedBlog = {...blog, liked: !blog.liked}
+    //updatedBlog is the parent blog. This will have its liked status toggled
+    const updatedBlog = {...blog, liked: !blog.liked}    
     updateBlog(blog.id, updatedBlog)
-    const newBlog = await blogService.create(blog)
+    //childBlog is the spawned from the parent, 
+    //it will contain a parent, which is the updatedBlog
+    const childBlog = {...blog, parent: updatedBlog}
+    console.log(childBlog)
+    const newBlog = await blogService.create(childBlog)
+    console.log(newBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }

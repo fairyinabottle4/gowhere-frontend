@@ -6,7 +6,6 @@ const reducer = (state = [], action) => {
         const id = action.data.id
         const toChange = state.find(n => n.id === id)
         const changedBlog = action.data.newBlog
-        console.log(changedBlog)
         return state.map(a => a.id !== id ? a : changedBlog)
       case 'NEW_BLOG':
         return [...state, action.data].sort((a,b) => a.votes-b.votes)

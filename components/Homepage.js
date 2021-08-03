@@ -6,7 +6,7 @@ import {
   Paper,
 } from '@material-ui/core'
 import blogService from '../services/blogs'
-import { addLike, createBlog, removeBlog } from '../reducers/blogsReducer'
+import { toggleLike, createBlog, removeBlog } from '../reducers/blogsReducer'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Blog from './Blog'
@@ -29,6 +29,17 @@ const Homepage = (props) => {
 
   const LikedItem = (props) => {
 
+
+    const updateBlog = async (blogId, blogObject) => {
+      try {
+        const updatedBlog = await blogService.update(blogId, blogObject)
+        dispatch(toggleLike(blogId, updatedBlog))
+        // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
+      } catch (exception) {
+        dispatch(setNotification("Could not update blog"))
+      }
+    }
+  
     const deleteBlog = async (blogId) => {
       try {
         const response = await blogService.remove(blogId)
@@ -50,6 +61,9 @@ const Homepage = (props) => {
     const handleDelete = () => {
       if (window.confirm(`Remove blog ${likedPlace.title}?`)) {
         deleteBlog(likedPlaceId)
+        const parent = likedPlace.parent
+        const updatedParentBlog = {parent, liked: !parent.liked}
+        updateBlog(parent.id, updatedParentBlog)
       }
     }
 
