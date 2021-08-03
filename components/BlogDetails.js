@@ -75,7 +75,7 @@ const BlogDetails = ({blog}) => {
         <Button 
           size='small' variant='contained' 
           color={liked ? 'secondary' : 'primary'} 
-          onClick={handleLike} className='blog-like'>{liked ? 'unlike' : "like"}
+          onClick={!liked ? handleLike : null} className='blog-like'>{liked ? 'Already Liked' : "like"}
         </Button>
       </h2>
       <p>{blog.description}</p>
