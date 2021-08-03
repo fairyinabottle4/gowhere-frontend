@@ -11,13 +11,14 @@ import Blog from './Blog'
 
 const Blogs = () => {
   const blogs = useSelector(state => state.blogs)
-  const sortedBlogs = blogs.sort((a,b) => b.likes - a.likes)
+  //Remove child blogs
+  const filteredBlogs = blogs.filter(p => p.parent === null)
   return (
     <div>
       <TableContainer component={Paper}>
         <Table>
           <TableBody>
-              {sortedBlogs.map(blog => 
+              {filteredBlogs.map(blog => 
               <TableRow key={blog.id}>
                   <Blog blog={blog} />
               </TableRow>

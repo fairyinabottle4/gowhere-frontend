@@ -12,6 +12,8 @@ const BlogDetails = ({blog}) => {
   const dispatch = useDispatch()
 
   const liked = blog.liked
+  //this inversion is done on purpose
+  const visited = blog.visited
 
   const updateBlog = async (blogId, blogObject) => {
     try {
@@ -45,21 +47,20 @@ const BlogDetails = ({blog}) => {
     updateBlog(blog.id, updatedBlog)
     //childBlog is the spawned from the parent, 
     //it will contain a parent, which is the updatedBlog
-    const childBlog = {...blog, parent: updatedBlog}
-    console.log(childBlog)
+    const childBlog = {...blog, parent: updatedBlog, opcode: 100}
     const newBlog = await blogService.create(childBlog)
-    console.log(newBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }
 
-  // const handleBeenThere = async () => {
-  //   // const updatedBlog = {...blog, likes: blog.likes + 1}
-  //   // updateBlog(blog.id, updatedBlog)
-  //   const newBlog = await blogService.create(blog)
-  //   // dispatch(createBlog(newBlog))
-  //   dispatch(initializeUsers())
-  // }
+  const handleVisited = async () => {
+    const updatedBlog = {...blog, liked: blog.liked, visited: !blog.visited}
+    updateBlog(blog.id, updatedBlog)
+    const childBlog = {...blog, parent: updatedBlog, opcode: 200}
+    const newBlog = await blogService.create(childBlog)
+    // dispatch(createBlog(newBlog))
+    dispatch(initializeUsers())
+  }
 
 
   const handleDelete = () => {
@@ -76,6 +77,11 @@ const BlogDetails = ({blog}) => {
           size='small' variant='contained' 
           color={liked ? 'secondary' : 'primary'} 
           onClick={!liked ? handleLike : null} className='blog-like'>{liked ? 'Already Liked' : "like"}
+        </Button>
+        <Button 
+          size='small' variant='contained' 
+          color={visited ? 'secondary' : 'primary'} 
+          onClick={!visited ? handleVisited : null} className='blog-like'>{visited ? 'Already Visited!' : "Visit"}
         </Button>
       </h2>
       <p>{blog.description}</p>
