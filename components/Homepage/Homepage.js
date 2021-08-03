@@ -73,7 +73,7 @@ const Homepage = (props) => {
   return (
     <div>
       <h2>Places I like</h2>
-      {likedPlaces?.map(place => <LikedItem id={place.id} likedPlace={place} />)}
+      {likedPlaces?.map(place => <LikedItem id={place.id} likedPlace={place} user={currUser}/>)}
       <h2>Places I visited</h2>
       {visitedPlaces?.map(place => <VisitedItem id={place.id} visitedPlace={place} />)}
     </div>

@@ -9,7 +9,14 @@ import { setNotification } from '../../reducers/notifReducer'
 
 const LikedItem = (props) => {
   const dispatch = useDispatch()
+  const user = props.user
 
+  const likedPlace = props.likedPlace
+  const temp = likedPlace.parent.userLiked.find(n => n.username === user.username)
+  const parent = likedPlace.parent
+  const indexCurr = parent.userLiked.indexOf(temp)
+
+  const likedPlaceId = props.id
 
   const updateBlog = async (blogId, blogObject) => {
     try {
@@ -36,15 +43,14 @@ const LikedItem = (props) => {
     }
   }
 
-  const likedPlace = props.likedPlace
-  const likedPlaceId = props.id
 
   const handleDelete = () => {
       if (window.confirm(`Remove blog ${likedPlace.title}?`)) {
-      deleteBlog(likedPlaceId)
-      const parent = likedPlace.parent
-      const updatedParentBlog = {...parent, liked: !parent.liked}
-      updateBlog(parent.id, updatedParentBlog)
+        const updatedUserLiked = { username: user.username, liked: false}
+        parent.userLiked[indexCurr] = updatedUserLiked
+        const updatedParentBlog = {...parent, userLiked: parent.userLiked}
+        updateBlog(parent.id, updatedParentBlog)
+        deleteBlog(likedPlaceId)
       }
   }
 

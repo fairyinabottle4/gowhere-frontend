@@ -9,7 +9,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Blog from './Blog'
 
-const Blogs = () => {
+const Blogs = ({user}) => {
   const blogs = useSelector(state => state.blogs)
   //Remove child blogs
   const filteredBlogs = blogs.filter(p => p.parent === null)
@@ -20,7 +20,7 @@ const Blogs = () => {
           <TableBody>
               {filteredBlogs.map(blog => 
               <TableRow key={blog.id}>
-                  <Blog blog={blog} />
+                  <Blog blog={blog} user={user} />
               </TableRow>
               
               )}

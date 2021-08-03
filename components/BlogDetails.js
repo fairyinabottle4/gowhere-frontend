@@ -7,11 +7,11 @@ import { setNotification } from '../reducers/notifReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
 
-const BlogDetails = ({blog}) => {
+const BlogDetails = ({blog, user}) => {
 
   const dispatch = useDispatch()
-
-  const liked = blog.liked
+  const temp = blog.userLiked.find(n => n.username === user.username)
+  const liked = temp.liked
   //this inversion is done on purpose
   const visited = blog.visited
 
@@ -42,17 +42,24 @@ const BlogDetails = ({blog}) => {
 
 
   const handleLike = async () => {
+    const indexCurr = blog.userLiked.indexOf(temp)
     //updatedBlog is the parent blog. This will have its liked status toggled
-    const updatedBlog = {...blog, liked: !blog.liked}    
+    //actually updatedUserLiked can simply use username: user.username and liked: true
+    const updatedUserLiked = { username: temp.username, liked: !temp.liked}
+    blog.userLiked[indexCurr] = updatedUserLiked
+    const updatedBlog = {...blog, userLiked: blog.userLiked}    
+    console.log(updatedBlog)
     updateBlog(blog.id, updatedBlog)
     //childBlog is the spawned from the parent, 
     //it will contain a parent, which is the updatedBlog
     const childBlog = {...blog, parent: updatedBlog, opcode: 100}
     const newBlog = await blogService.create(childBlog)
+    console.log(newBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }
 
+  //to be updated!
   const handleVisited = async () => {
     const updatedBlog = {...blog, liked: blog.liked, visited: !blog.visited}
     updateBlog(blog.id, updatedBlog)

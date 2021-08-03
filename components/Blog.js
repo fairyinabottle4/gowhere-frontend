@@ -11,7 +11,7 @@ import {
 } from "react-router-dom"
 
 
-const Blog = ({blog}) => {
+const Blog = ({blog, user}) => {
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -31,7 +31,7 @@ const Blog = ({blog}) => {
     </TableCell>
     <TableCell>{blog.author}</TableCell>
     <Togglable buttonLabel="view" ref={blogDetailsRef}>
-      <BlogDetails key={blog.id} blog={blog} />
+      <BlogDetails key={blog.id} blog={blog} user={user}/>
     </Togglable>
   </div>)  
 }

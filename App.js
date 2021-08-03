@@ -83,7 +83,7 @@ const App = () => {
                   <UsersTable />
                 </Route>
                 <Route path='/blogs'>
-                  <BlogList/>
+                  <BlogList user={user}/>
                 </Route>
                 <Route path='/create-new'>
                   <h2>create new</h2>
