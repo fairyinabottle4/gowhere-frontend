@@ -5,14 +5,14 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core'
-import blogService from '../services/blogs'
-import { toggleLike, createBlog, removeBlog } from '../reducers/blogsReducer'
+import blogService from '../../services/blogs'
+import { toggleLike, createBlog, removeBlog } from '../../reducers/blogsReducer'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Blog from './Blog'
+import Blog from '../Blog'
 import { Button, Link } from '@material-ui/core'
-import { initializeUsers } from '../reducers/usersReducer'
-import { setNotification } from '../reducers/notifReducer'
+import { initializeUsers } from '../../reducers/usersReducer'
+import { setNotification } from '../../reducers/notifReducer'
 
 const Homepage = (props) => {
   const currUser = props.user

@@ -9,7 +9,7 @@ import Togglable from './components/Togglable'
 import BlogPage from './components/BlogPage'
 import UserPage from './components/User'
 import blogService from './services/blogs'
-import Homepage from './components/Homepage'
+import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
