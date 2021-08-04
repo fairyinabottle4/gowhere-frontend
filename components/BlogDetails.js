@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
-import { toggleLike, createBlog, removeBlog } from '../reducers/blogsReducer'
+import { toggleLike, initBlogs, removeBlog } from '../reducers/blogsReducer'
 import { setNotification } from '../reducers/notifReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
@@ -18,7 +18,6 @@ const BlogDetails = ({blog, user}) => {
     }
   }
 
-  console.log(blog)
   const dispatch = useDispatch()
   const likedList = blog.userLiked.find(n => n.username === user.username)
   useEffect(() => {
@@ -73,6 +72,7 @@ const BlogDetails = ({blog, user}) => {
     const newBlog = await blogService.create(childBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
+    dispatch(initBlogs())
   }
 
   //to be updated!
@@ -80,12 +80,13 @@ const BlogDetails = ({blog, user}) => {
     const indexCurr = blog.userVisited.indexOf(visitedList)
     const updatedUserVisited = { username: visitedList?.username, visited: !visitedList.visited}
     blog.userVisited[indexCurr] = updatedUserVisited
-    const updatedBlog = {...blog, liked: blog.liked, userVisited: blog.userVisited}
+    const updatedBlog = {...blog, userVisited: blog.userVisited}
     updateBlog(blog.id, updatedBlog)
     const childBlog = {...blog, parent: updatedBlog, opcode: 200}
     const newBlog = await blogService.create(childBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
+    dispatch(initBlogs())
   }
 
 

@@ -10,7 +10,7 @@ const reducer = (state = [], action) => {
       case 'NEW_BLOG':
         return [...state, action.data].sort((a,b) => a.votes-b.votes)
       case 'INIT_BLOGS':
-        return action.data  
+        return action.data
       case 'DELETE_BLOG':
         return state.filter(b => b.id !== action.data.id)
       case 'ADD_COMMENT':

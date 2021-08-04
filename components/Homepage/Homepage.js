@@ -29,10 +29,8 @@ const Homepage = (props) => {
     const visitedPlace = props.visitedPlace
     const visitedPlaceId = props.id
     const temp = visitedPlace.parent.userVisited.find(n => n.username === user.username)
-    console.log(temp)
     const parent = visitedPlace.parent
     const indexCurr = parent.userVisited.indexOf(temp)
-    console.log(indexCurr)
 
     const updateBlog = async (blogId, blogObject) => {
       try {
@@ -59,11 +57,18 @@ const Homepage = (props) => {
       }
     }
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
       if (window.confirm(`Remove blog ${visitedPlace.title}?`)) {
+        const original = await blogService.getSingle(parent.id)
+        console.log(original)
+        const tempLiked = original.userLiked.find(n => n.username === user.username)
+        const currLikedStatus = tempLiked.liked
+        const indexLiked = original.userLiked.indexOf(tempLiked)
         const updatedUserVisited = { username: user.username, visited: false}
+        const updatedUserLiked = { username: user.username, liked: currLikedStatus}
+        original.userLiked[indexLiked] = updatedUserLiked
         parent.userVisited[indexCurr] = updatedUserVisited
-        const updatedParentBlog = {...parent, userVisited: parent.userVisited}
+        const updatedParentBlog = {...parent, userLiked: original.userLiked, userVisited: parent.userVisited}
         console.log(updatedParentBlog)
         updateBlog(parent.id, updatedParentBlog)
         deleteBlog(visitedPlaceId)
