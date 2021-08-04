@@ -3,8 +3,7 @@ import { toggleLike, createBlog, removeBlog } from '../../reducers/blogsReducer'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import LikedItem from './LikedItems'
-import Blog from '../Blog'
-import { Button, Link } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { initializeUsers } from '../../reducers/usersReducer'
 import { setNotification } from '../../reducers/notifReducer'
 
@@ -19,7 +18,6 @@ const Homepage = (props) => {
   const likedPlaces = userLikes?.blogs
   const visitedPlaces = userVisited?.visited
   //blogs will be visited places
-  // const visitedPlaces = user.likedPlaces
 
   const dispatch = useDispatch()
 
@@ -60,7 +58,6 @@ const Homepage = (props) => {
     const handleDelete = async () => {
       if (window.confirm(`Remove blog ${visitedPlace.title}?`)) {
         const original = await blogService.getSingle(parent.id)
-        console.log(original)
         const tempLiked = original.userLiked.find(n => n.username === user.username)
         const currLikedStatus = tempLiked.liked
         const indexLiked = original.userLiked.indexOf(tempLiked)
@@ -69,7 +66,6 @@ const Homepage = (props) => {
         original.userLiked[indexLiked] = updatedUserLiked
         parent.userVisited[indexCurr] = updatedUserVisited
         const updatedParentBlog = {...parent, userLiked: original.userLiked, userVisited: parent.userVisited}
-        console.log(updatedParentBlog)
         updateBlog(parent.id, updatedParentBlog)
         deleteBlog(visitedPlaceId)
       }

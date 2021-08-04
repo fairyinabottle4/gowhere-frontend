@@ -75,7 +75,6 @@ const BlogDetails = ({blog, user}) => {
     dispatch(initBlogs())
   }
 
-  //to be updated!
   const handleVisited = async () => {
     const indexCurr = blog.userVisited.indexOf(visitedList)
     const updatedUserVisited = { username: visitedList?.username, visited: !visitedList.visited}

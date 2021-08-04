@@ -47,7 +47,6 @@ const LikedItem = (props) => {
   const handleDelete = async () => {
       if (window.confirm(`Remove blog ${likedPlace.title}?`)) {
         const original = await blogService.getSingle(parent.id)
-        console.log(original)
         const tempVisited = original.userVisited.find(n => n.username === user.username)
         const currVisitStatus = tempVisited.visited
         const indexVisited = original.userVisited.indexOf(tempVisited)
