@@ -20,15 +20,15 @@ const BlogDetails = ({blog, user}) => {
 
 
   const dispatch = useDispatch()
-  const userListing = blog.userLiked.find(n => n.username === user.username)
-  if (!userListing) {
+  const likedList = blog.userLiked.find(n => n.username === user.username)
+  if (!likedList) {
     const newUser = { username: user.username, liked: false }
     const updatedArray = blog.userLiked.concat(newUser)
     const updatedBlog = {...blog, userLiked: updatedArray}
     updateBlog(blog.id, updatedBlog)
   }
 
-  const liked = userListing?.liked
+  const liked = likedList?.liked
   const visited = blog.visited
 
   const deleteBlog = async (blogId) => {
@@ -48,10 +48,10 @@ const BlogDetails = ({blog, user}) => {
 
 
   const handleLike = async () => {
-    const indexCurr = blog.userLiked.indexOf(userListing)
+    const indexCurr = blog.userLiked.indexOf(likedList)
     //updatedBlog is the parent blog. This will have its liked status toggled
     //actually updatedUserLiked can simply use username: user.username and liked: true
-    const updatedUserLiked = { username: userListing.username, liked: !userListing.liked}
+    const updatedUserLiked = { username: likedList.username, liked: !likedList.liked}
     blog.userLiked[indexCurr] = updatedUserLiked
     const updatedBlog = {...blog, userLiked: blog.userLiked}    
     updateBlog(blog.id, updatedBlog)
