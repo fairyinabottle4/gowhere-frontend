@@ -24,6 +24,16 @@ const Homepage = (props) => {
   const dispatch = useDispatch()
 
   const VisitedItem = (props) => {
+
+    const user = props.user
+    const visitedPlace = props.visitedPlace
+    const visitedPlaceId = props.id
+    const temp = visitedPlace.parent.userVisited.find(n => n.username === user.username)
+    console.log(temp)
+    const parent = visitedPlace.parent
+    const indexCurr = parent.userVisited.indexOf(temp)
+    console.log(indexCurr)
+
     const updateBlog = async (blogId, blogObject) => {
       try {
         const updatedBlog = await blogService.update(blogId, blogObject)
@@ -40,7 +50,7 @@ const Homepage = (props) => {
       if (response.status === 204) {
         dispatch(removeBlog(blogId))
         dispatch(initializeUsers())
-        dispatch(setNotification(`Blog removed from liked list`))
+        dispatch(setNotification(`Blog removed from visited list`))
       } else {
           dispatch(setNotification('could not remove'))
       }
@@ -49,15 +59,14 @@ const Homepage = (props) => {
       }
     }
 
-    const visitedPlace = props.visitedPlace
-    const visitedPlaceId = props.id
-
     const handleDelete = () => {
       if (window.confirm(`Remove blog ${visitedPlace.title}?`)) {
-        deleteBlog(visitedPlaceId)
-        const parent = visitedPlace.parent
-        const updatedParentBlog = {...parent, visited: !parent.visited}
+        const updatedUserVisited = { username: user.username, visited: false}
+        parent.userVisited[indexCurr] = updatedUserVisited
+        const updatedParentBlog = {...parent, userVisited: parent.userVisited}
+        console.log(updatedParentBlog)
         updateBlog(parent.id, updatedParentBlog)
+        deleteBlog(visitedPlaceId)
       }
     }
 
@@ -75,7 +84,7 @@ const Homepage = (props) => {
       <h2>Places I like</h2>
       {likedPlaces?.map(place => <LikedItem id={place.id} likedPlace={place} user={currUser}/>)}
       <h2>Places I visited</h2>
-      {visitedPlaces?.map(place => <VisitedItem id={place.id} visitedPlace={place} />)}
+      {visitedPlaces?.map(place => <VisitedItem id={place.id} visitedPlace={place} user={currUser} />)}
     </div>
   )
 }

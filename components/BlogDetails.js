@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
@@ -18,18 +18,30 @@ const BlogDetails = ({blog, user}) => {
     }
   }
 
-
+  console.log(blog)
   const dispatch = useDispatch()
   const likedList = blog.userLiked.find(n => n.username === user.username)
-  if (!likedList) {
-    const newUser = { username: user.username, liked: false }
-    const updatedArray = blog.userLiked.concat(newUser)
-    const updatedBlog = {...blog, userLiked: updatedArray}
-    updateBlog(blog.id, updatedBlog)
-  }
+  useEffect(() => {
+    if (!likedList) {
+      const newUser = { username: user.username, liked: false }
+      const updatedArray = blog.userLiked.concat(newUser)
+      const updatedBlog = {...blog, userLiked: updatedArray}
+      updateBlog(blog.id, updatedBlog)
+    }  
+  },[])
 
+  const visitedList = blog.userVisited.find(n => n.username === user.username)
+
+  useEffect(() => {
+    if (!visitedList) {
+      const newUser = { username: user.username, visited: false }
+      const updatedArray = blog.userVisited.concat(newUser)
+      const updatedBlog = {...blog, userVisited: updatedArray}
+      updateBlog(blog.id, updatedBlog)  
+    }  
+  },[])
   const liked = likedList?.liked
-  const visited = blog.visited
+  const visited = visitedList?.visited
 
   const deleteBlog = async (blogId) => {
     try {
@@ -65,7 +77,10 @@ const BlogDetails = ({blog, user}) => {
 
   //to be updated!
   const handleVisited = async () => {
-    const updatedBlog = {...blog, liked: blog.liked, visited: !blog.visited}
+    const indexCurr = blog.userVisited.indexOf(visitedList)
+    const updatedUserVisited = { username: visitedList?.username, visited: !visitedList.visited}
+    blog.userVisited[indexCurr] = updatedUserVisited
+    const updatedBlog = {...blog, liked: blog.liked, userVisited: blog.userVisited}
     updateBlog(blog.id, updatedBlog)
     const childBlog = {...blog, parent: updatedBlog, opcode: 200}
     const newBlog = await blogService.create(childBlog)
