@@ -8,13 +8,6 @@ import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
 
 const BlogDetails = ({blog, user}) => {
-
-  const dispatch = useDispatch()
-  const temp = blog.userLiked.find(n => n.username === user.username)
-  const liked = temp.liked
-  //this inversion is done on purpose
-  const visited = blog.visited
-
   const updateBlog = async (blogId, blogObject) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
@@ -24,6 +17,23 @@ const BlogDetails = ({blog, user}) => {
       dispatch(setNotification("Could not update blog"))
     }
   }
+
+
+  const dispatch = useDispatch()
+  const temp = blog.userLiked.find(n => n.username === user.username)
+  if (!temp) {
+    const newUser = { username: user.username, liked: false }
+    console.log(newUser)
+    const updatedArray = blog.userLiked.concat(newUser)
+    console.log(updatedArray)
+    const updatedBlog = {...blog, userLiked: updatedArray}
+    console.log(updatedBlog)
+    updateBlog(blog.id, updatedBlog)
+  }
+
+  const liked = temp?.liked
+  console.log(liked)
+  const visited = blog.visited
 
   const deleteBlog = async (blogId) => {
     try {
@@ -48,13 +58,13 @@ const BlogDetails = ({blog, user}) => {
     const updatedUserLiked = { username: temp.username, liked: !temp.liked}
     blog.userLiked[indexCurr] = updatedUserLiked
     const updatedBlog = {...blog, userLiked: blog.userLiked}    
-    console.log(updatedBlog)
+    // console.log(updatedBlog)
     updateBlog(blog.id, updatedBlog)
     //childBlog is the spawned from the parent, 
     //it will contain a parent, which is the updatedBlog
     const childBlog = {...blog, parent: updatedBlog, opcode: 100}
     const newBlog = await blogService.create(childBlog)
-    console.log(newBlog)
+    // console.log(newBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }
