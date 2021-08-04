@@ -23,16 +23,12 @@ const BlogDetails = ({blog, user}) => {
   const temp = blog.userLiked.find(n => n.username === user.username)
   if (!temp) {
     const newUser = { username: user.username, liked: false }
-    console.log(newUser)
     const updatedArray = blog.userLiked.concat(newUser)
-    console.log(updatedArray)
     const updatedBlog = {...blog, userLiked: updatedArray}
-    console.log(updatedBlog)
     updateBlog(blog.id, updatedBlog)
   }
 
   const liked = temp?.liked
-  console.log(liked)
   const visited = blog.visited
 
   const deleteBlog = async (blogId) => {
@@ -58,13 +54,11 @@ const BlogDetails = ({blog, user}) => {
     const updatedUserLiked = { username: temp.username, liked: !temp.liked}
     blog.userLiked[indexCurr] = updatedUserLiked
     const updatedBlog = {...blog, userLiked: blog.userLiked}    
-    // console.log(updatedBlog)
     updateBlog(blog.id, updatedBlog)
     //childBlog is the spawned from the parent, 
     //it will contain a parent, which is the updatedBlog
     const childBlog = {...blog, parent: updatedBlog, opcode: 100}
     const newBlog = await blogService.create(childBlog)
-    // console.log(newBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
   }
