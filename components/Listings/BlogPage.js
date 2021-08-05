@@ -6,9 +6,9 @@ import {
   Redirect
 } from "react-router-dom"
 import { useDispatch } from 'react-redux'
-import blogService from '../services/blogs'
+import blogService from '../../services/blogs'
 import { Link, Button, TextField } from '@material-ui/core'  
-import { updateComment } from '../reducers/blogsReducer'
+import { updateComment } from '../../reducers/blogsReducer'
 
 const BlogPage = () => {
   const [newComment, setNewComment] = useState('')

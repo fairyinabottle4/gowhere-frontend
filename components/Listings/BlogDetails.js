@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import blogService from '../services/blogs'
+import blogService from '../../services/blogs'
 import { useDispatch } from 'react-redux'
-import { toggleStatus, initBlogs, removeBlog } from '../reducers/blogsReducer'
-import { setNotification } from '../reducers/notifReducer'
-import { initializeUsers } from '../reducers/usersReducer'
+import { toggleStatus, initBlogs, removeBlog } from '../../reducers/blogsReducer'
+import { setNotification } from '../../reducers/notifReducer'
+import { initializeUsers } from '../../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
 
 const BlogDetails = ({blog, user}) => {
