@@ -1,68 +1,68 @@
 import React, { useState } from 'react'
-import blogService from '../services/sites'
+import siteService from '../services/sites'
 import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notifReducer'
-import { createBlog } from '../reducers/sitesReducer'
+import { createSite } from '../reducers/sitesReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, TextField } from '@material-ui/core'
 
-const NewBlogForm = () => {
+const NewSiteForm = () => {
 
-  const [newBlogTitle, setNewBlogTitle] = useState('')
-  const [newBlogAuthor, setNewBlogAuthor] = useState('')
-  const [newBlogUrl, setNewBlogUrl] = useState('')
+  const [newSiteTitle, setNewSiteTitle] = useState('')
+  const [newSiteAuthor, setNewSiteAuthor] = useState('')
+  const [newSiteUrl, setNewSiteUrl] = useState('')
 
   const dispatch = useDispatch()
 
-  const addBlog = async (event) => {
+  const addSite = async (event) => {
     event.preventDefault()
-    const blogObject = {
-      title: newBlogTitle,
-      author: newBlogAuthor,
-      url: newBlogUrl,
+    const siteObject = {
+      title: newSiteTitle,
+      author: newSiteAuthor,
+      url: newSiteUrl,
       comments: []
     }
-    const newBlog = await blogService.create(blogObject)
-    dispatch(createBlog(newBlog))
+    const newSite = await siteService.create(siteObject)
+    dispatch(createSite(newSite))
     dispatch(initializeUsers())
-    dispatch(setNotification(`A new blog ${newBlogTitle} by ${newBlogAuthor}`))
-    setNewBlogTitle('')
-    setNewBlogAuthor('')
-    setNewBlogUrl('')
+    dispatch(setNotification(`A new site ${newSiteTitle} by ${newSiteAuthor}`))
+    setNewSiteTitle('')
+    setNewSiteAuthor('')
+    setNewSiteUrl('')
   }
 
   const handleTitleChange = (event) => {
-    setNewBlogTitle(event.target.value)
+    setNewSiteTitle(event.target.value)
   }
 
   const handleAuthorChange = (event) => {
-    setNewBlogAuthor(event.target.value)
+    setNewSiteAuthor(event.target.value)
   }
 
   const handleUrlChange = (event) => {
-    setNewBlogUrl(event.target.value)
+    setNewSiteUrl(event.target.value)
   }
 
   return (
-  <form onSubmit={addBlog} id="create">
+  <form onSubmit={addSite} id="create">
     <div>
       <TextField     
         label='title' 
-        value={newBlogTitle}
+        value={newSiteTitle}
         onChange={handleTitleChange}
         id="Title">
       </TextField>
       <br/>
       <TextField         
         label='author'
-        value={newBlogAuthor}
+        value={newSiteAuthor}
         onChange={handleAuthorChange}
         id="Author">
       </TextField>
       <br/>
       <TextField
         label='Url'
-        value={newBlogUrl}
+        value={newSiteUrl}
         onChange={handleUrlChange}
         id="Url">
       </TextField>
@@ -71,4 +71,4 @@ const NewBlogForm = () => {
   </form>  
 )}
 
-export default NewBlogForm
+export default NewSiteForm

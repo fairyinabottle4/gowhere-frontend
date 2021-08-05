@@ -1,5 +1,5 @@
 import loginService from '../services/login'
-import blogService from '../services/sites'
+import siteService from '../services/sites'
 import { setNotification } from './notifReducer'
 
 const currUserReducer = (state=null, action) => {
@@ -18,9 +18,9 @@ export const loginUser = ( username, password ) => {
         username, password,
       })
       window.localStorage.setItem(
-        'loggedBlogappUser', JSON.stringify(user)
+        'loggedSiteappUser', JSON.stringify(user)
       ) 
-      blogService.setToken(user.token)
+      siteService.setToken(user.token)
       dispatch(setCurrUser(user))
     } catch (exception) {
       dispatch(setNotification("Wrong credentials", 5))

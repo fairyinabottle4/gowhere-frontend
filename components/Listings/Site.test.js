@@ -1,12 +1,12 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent } from '@testing-library/react'
-import Blog from './Site'
+import Site from './Site'
 
-describe('<Blog />', () => {
+describe('<Site />', () => {
     let component
-    const mockUpdateBlog = jest.fn()
-    const mockDeleteBlog = jest.fn()
+    const mockUpdateSite = jest.fn()
+    const mockDeleteSite = jest.fn()
 
     beforeEach(() => {
         const user = {
@@ -14,7 +14,7 @@ describe('<Blog />', () => {
             username: 'Testusername'
         }  
       
-        const blog = {
+        const site = {
           title: 'Kafka on the Shore',
           author: 'Haruki Murakami',
           url: 'https://en.wikipedia.org/wiki/Kafka_on_the_Shore',
@@ -23,7 +23,7 @@ describe('<Blog />', () => {
         }
             
         component = render(
-            <Blog blog={blog} updateBlog={mockUpdateBlog} deleteBlog={mockDeleteBlog} />
+            <Site site={site} updateSite={mockUpdateSite} deleteSite={mockDeleteSite} />
         )
         
     })
@@ -31,7 +31,7 @@ describe('<Blog />', () => {
     test('renders title and author but not url or likes', () => {
 
         //5.13
-        const title = component.container.querySelector('.blog-title-author')
+        const title = component.container.querySelector('.site-title-author')
         expect(title).toHaveTextContent(
           'Kafka on the Shore'
         )
@@ -51,7 +51,7 @@ describe('<Blog />', () => {
           const button = component.getByText('view')
           fireEvent.click(button)
       
-          const details = component.container.querySelector('.blog-details')
+          const details = component.container.querySelector('.site-details')
           expect(details).toHaveTextContent(
               'https://en.wikipedia.org/wiki/Kafka_on_the_Shore'
           )
@@ -67,7 +67,7 @@ describe('<Blog />', () => {
          const like_button = component.getByText('like')
          fireEvent.click(like_button)
          fireEvent.click(like_button)
-         expect(mockUpdateBlog.mock.calls).toHaveLength(2)
+         expect(mockUpdateSite.mock.calls).toHaveLength(2)
       })
     
       

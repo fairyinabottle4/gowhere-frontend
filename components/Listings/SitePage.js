@@ -6,7 +6,7 @@ import {
   Redirect
 } from "react-router-dom"
 import { useDispatch } from 'react-redux'
-import blogService from '../../services/sites'
+import siteService from '../../services/sites'
 import { Link, Button, TextField } from '@material-ui/core'  
 import { updateComment } from '../../reducers/sitesReducer'
 
@@ -14,11 +14,11 @@ const SitePage = () => {
   const [newComment, setNewComment] = useState('')
   
   const dispatch = useDispatch()
-  //possible bug here, need to refesh the list of blogs
-  const blogs = useSelector(state => state.sites)
+  //possible bug here, need to refesh the list of sites
+  const sites = useSelector(state => state.sites)
 
   const id = useParams().id
-  const blog = blogs.find(n => n.id === id)
+  const site = sites.find(n => n.id === id)
 
   const handleNewComment = (event) => {
     setNewComment(event.target.value)
@@ -26,22 +26,22 @@ const SitePage = () => {
 
   const addComment = async (event) => {
     event.preventDefault()
-    const blogObject = {
-      ...blog, 
-      comments: blog.comments.concat(newComment)
+    const siteObject = {
+      ...site, 
+      comments: site.comments.concat(newComment)
     }
-    const newBlog = await blogService.update(id, blogObject)
-    dispatch(updateComment(id, newBlog))
+    const newSite = await siteService.update(id, siteObject)
+    dispatch(updateComment(id, newSite))
     setNewComment('')
   }
-  if (!blog) {
-    return <Redirect to="/blogs" />
+  if (!site) {
+    return <Redirect to="/sites" />
   }
   return (
     <div>
-      <h2>{blog.title} by {blog.author}</h2>
-      <Link href={blog.url}>{blog.url}</Link>
-      <p>added by {blog.user.name}</p>
+      <h2>{site.title} by {site.author}</h2>
+      <Link href={site.url}>{site.url}</Link>
+      <p>added by {site.user.name}</p>
       <h3>comments</h3>
       <form onSubmit={addComment}>
         <div>
@@ -54,7 +54,7 @@ const SitePage = () => {
         </div>
       <Button variant='contained' size='small' color='primary' type='submit'>add comment</Button>  
       </form>
-      {blog.comments.map(comment => <li>{comment}</li>)}
+      {site.comments.map(comment => <li>{comment}</li>)}
     </div>
   )
 }

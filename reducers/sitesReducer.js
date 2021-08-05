@@ -1,62 +1,62 @@
-import blogService from '../services/sites'
+import siteService from '../services/sites'
 
 const reducer = (state = [], action) => {  
     switch(action.type) {
       case 'TOGGLE_STATUS':
         const id = action.data.id
         const toChange = state.find(n => n.id === id)
-        const changedBlog = action.data.newBlog
-        return state.map(a => a.id !== id ? a : changedBlog)
-      case 'NEW_BLOG':
+        const changedSite = action.data.newSite
+        return state.map(a => a.id !== id ? a : changedSite)
+      case 'NEW_SITE':
         return [...state, action.data].sort((a,b) => a.votes-b.votes)
-      case 'INIT_BLOGS':
+      case 'INIT_SITES':
         return action.data
-      case 'DELETE_BLOG':
+      case 'DELETE_SITE':
         return state.filter(b => b.id !== action.data.id)
       case 'ADD_COMMENT':
         const newID = action.data.id
-        const newBlog = action.data.changedBlog
-        return state.map(a => a.id !== newID ? a : newBlog)
+        const newSite = action.data.changedSite
+        return state.map(a => a.id !== newID ? a : newSite)
       default:
         return state
     }
 }
 
-export const toggleStatus = (id, newBlog) => {
+export const toggleStatus = (id, newSite) => {
   return async dispatch => {
     dispatch({
       type: 'TOGGLE_STATUS',
-      data: { id, newBlog }
+      data: { id, newSite }
     })
   }
 }
 
-export const updateComment = (id, changedBlog) => {
+export const updateComment = (id, changedSite) => {
   return async dispatch => {
     dispatch({
       type: 'ADD_COMMENT',
-      data: { id, changedBlog }
+      data: { id, changedSite }
     })
   }
 }
 
 export const initSites = () => {
   return async dispatch => {
-    const blogs = await blogService.getAll()
+    const sites = await siteService.getAll()
     dispatch({
-      type: 'INIT_BLOGS',
-      data: blogs  
+      type: 'INIT_SITES',
+      data: sites  
     })
   }
 }
 
-export const createBlog = (newBlog) => {
+export const createSite = (newSite) => {
   //if the content is blank? Maybe do something?
   return async dispatch => {
     //send the data to the server first then change the state of the store
     dispatch({
-      type: 'NEW_BLOG',
-      data: newBlog
+      type: 'NEW_SITE',
+      data: newSite
     })
   }
 } 
@@ -64,7 +64,7 @@ export const createBlog = (newBlog) => {
 export const removeSite = (id) => {
   return async dispatch => {
     dispatch({
-      type: 'DELETE_BLOG',
+      type: 'DELETE_SITE',
       data: { id }
     })
   }
