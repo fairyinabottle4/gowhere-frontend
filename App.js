@@ -8,7 +8,7 @@ import About from './components/About'
 import Togglable from './components/Listings/Togglable'
 import SitePage from './components/Listings/SitePage'
 import UserPage from './components/User'
-import blogService from './services/blogs'
+import blogService from './services/sites'
 import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -16,7 +16,7 @@ import {
   Switch, Route, Link,
 } from "react-router-dom"
 import { setCurrUser } from './reducers/currUserReducer'
-import { initBlogs } from './reducers/blogsReducer'
+import { initBlogs } from './reducers/sitesReducer'
 import { initializeUsers } from './reducers/usersReducer'
 import UsersTable from './components/UsersTable'
 

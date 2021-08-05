@@ -1,5 +1,5 @@
 import loginService from '../services/login'
-import blogService from '../services/blogs'
+import blogService from '../services/sites'
 import { setNotification } from './notifReducer'
 
 const currUserReducer = (state=null, action) => {

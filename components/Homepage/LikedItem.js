@@ -1,5 +1,5 @@
-import blogService from '../../services/blogs'
-import { toggleStatus, removeBlog } from '../../reducers/blogsReducer'
+import blogService from '../../services/sites'
+import { toggleStatus, removeBlog } from '../../reducers/sitesReducer'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Button } from '@material-ui/core'

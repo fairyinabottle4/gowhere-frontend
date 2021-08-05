@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import blogService from '../services/blogs'
+import blogService from '../services/sites'
 import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notifReducer'
-import { createBlog } from '../reducers/blogsReducer'
+import { createBlog } from '../reducers/sitesReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, TextField } from '@material-ui/core'
 
