@@ -13,7 +13,7 @@ const Homepage = (props) => {
   const userLikes = users?.jsonUser?.find(n => n.username === currUser.username)
   const userVisited = users?.jsonVisited?.find(n => n.username === currUser.username)
 
-  const likedPlaces = userLikes?.blogs
+  const likedPlaces = userLikes?.liked
   const visitedPlaces = userVisited?.visited
 
   return (
