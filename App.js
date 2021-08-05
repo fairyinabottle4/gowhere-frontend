@@ -73,7 +73,7 @@ const App = () => {
               <p>{user.name} logged in</p>
               <button onClick={handleLogout}>logout</button>
               <Switch>
-                <Route path='/blogs/:id'>
+                <Route path='/sites/:id'>
                   <SitePage />
                 </Route>
                 <Route path='/users/:id'>
@@ -82,7 +82,7 @@ const App = () => {
                 <Route path='/users'>
                   <UsersTable />
                 </Route>
-                <Route path='/blogs'>
+                <Route path='/sites'>
                   <BlogList user={user}/>
                 </Route>
                 <Route path='/create-new'>
