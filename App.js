@@ -37,7 +37,7 @@ const App = () => {
   }, [dispatch])
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+    const loggedUserJSON = window.localStorage.getItem('loggedSiteappUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       dispatch(setCurrUser(user))
@@ -54,7 +54,7 @@ const App = () => {
   )
 
   const handleLogout = () => {
-    window.localStorage.removeItem('loggedNoteappUser')
+    window.localStorage.removeItem('loggedSiteappUser')
     window.localStorage.clear()
     dispatch(setCurrUser(null))
     return <LoginForm />
