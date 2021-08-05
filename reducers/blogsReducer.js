@@ -2,7 +2,7 @@ import blogService from '../services/blogs'
 
 const reducer = (state = [], action) => {  
     switch(action.type) {
-      case 'TOGGLE_LIKE':
+      case 'TOGGLE_STATUS':
         const id = action.data.id
         const toChange = state.find(n => n.id === id)
         const changedBlog = action.data.newBlog
@@ -22,10 +22,10 @@ const reducer = (state = [], action) => {
     }
 }
 
-export const toggleLike = (id, newBlog) => {
+export const toggleStatus = (id, newBlog) => {
   return async dispatch => {
     dispatch({
-      type: 'TOGGLE_LIKE',
+      type: 'TOGGLE_STATUS',
       data: { id, newBlog }
     })
   }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
-import { toggleLike, initBlogs, removeBlog } from '../reducers/blogsReducer'
+import { toggleStatus, initBlogs, removeBlog } from '../reducers/blogsReducer'
 import { setNotification } from '../reducers/notifReducer'
 import { initializeUsers } from '../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
@@ -11,9 +11,10 @@ const BlogDetails = ({blog, user}) => {
   const updateBlog = async (blogId, blogObject) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
-      dispatch(toggleLike(blogId, updatedBlog))
+      dispatch(toggleStatus(blogId, updatedBlog))
       // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
     } catch (exception) {
+      console.log(exception)
       dispatch(setNotification("Could not update blog"))
     }
   }

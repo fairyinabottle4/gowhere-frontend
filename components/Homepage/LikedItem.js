@@ -1,5 +1,5 @@
 import blogService from '../../services/blogs'
-import { toggleLike, removeBlog } from '../../reducers/blogsReducer'
+import { toggleStatus, removeBlog } from '../../reducers/blogsReducer'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Button } from '@material-ui/core'
@@ -21,7 +21,7 @@ const LikedItem = (props) => {
   const updateBlog = async (blogId, blogObject) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
-      dispatch(toggleLike(blogId, updatedBlog))
+      dispatch(toggleStatus(blogId, updatedBlog))
       // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
     } catch (exception) {
       dispatch(setNotification("Could not update blog"))
