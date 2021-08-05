@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import LikedItem from './LikedItems'
+import LikedItem from './LikedItem'
 import VisitedItem from './VisitedItem'
 import { Button } from '@material-ui/core'
 import { initializeUsers } from '../../reducers/usersReducer'
