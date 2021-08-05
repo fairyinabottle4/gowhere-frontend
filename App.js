@@ -8,6 +8,8 @@ import Togglable from './components/Listings/Togglable'
 import siteService from './services/sites'
 import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
+import Search from './components/Search'
+
 import {
   BrowserRouter as Router,
   Switch, Route, Link,
@@ -66,6 +68,9 @@ const App = () => {
                 </Route>
                 <Route path='/about'>
                   <About />
+                </Route>
+                <Route path='/search'>
+                  <Search user={user} />
                 </Route>
                 <Route path='/'>
                   <Homepage user={user} />

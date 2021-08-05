@@ -13,6 +13,7 @@ const Menu = () => {
       <div>
         <Link to='/' style={padding}>home</Link>
         <Link to='/sites' style={padding}>sites</Link>
+        <Link to='/search' style={padding}>search</Link>
         <Link to='/about' style={padding}>about</Link>
       </div>
     )

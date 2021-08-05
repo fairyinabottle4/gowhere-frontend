@@ -20,7 +20,7 @@ const SiteDetails = ({site, user}) => {
   }
 
   const dispatch = useDispatch()
-  const likedList = site.userLiked.find(n => n.username === user.username)
+  const likedList = site?.userLiked.find(n => n?.username === user.username)
   useEffect(() => {
     if (!likedList) {
       const newUser = { username: user.username, liked: false }
