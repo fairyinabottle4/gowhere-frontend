@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 import Blog from './Site'
 
 const SiteList = ({user}) => {
-  const blogs = useSelector(state => state.blogs)
+  const blogs = useSelector(state => state.sites)
   //Remove child blogs
   const filteredBlogs = blogs.filter(p => p.parent === null)
   return (

@@ -16,7 +16,7 @@ import {
   Switch, Route, Link,
 } from "react-router-dom"
 import { setCurrUser } from './reducers/currUserReducer'
-import { initBlogs } from './reducers/sitesReducer'
+import { initSites } from './reducers/sitesReducer'
 import { initializeUsers } from './reducers/usersReducer'
 import UsersTable from './components/UsersTable'
 
@@ -29,7 +29,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(initBlogs())
+    dispatch(initSites())
   }, [dispatch])
 
   useEffect(() => {

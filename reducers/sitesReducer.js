@@ -40,7 +40,7 @@ export const updateComment = (id, changedBlog) => {
   }
 }
 
-export const initBlogs = () => {
+export const initSites = () => {
   return async dispatch => {
     const blogs = await blogService.getAll()
     dispatch({
@@ -61,7 +61,7 @@ export const createBlog = (newBlog) => {
   }
 } 
 
-export const removeBlog = (id) => {
+export const removeSite = (id) => {
   return async dispatch => {
     dispatch({
       type: 'DELETE_BLOG',

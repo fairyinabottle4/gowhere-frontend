@@ -1,5 +1,5 @@
 import blogService from '../../services/sites'
-import { toggleStatus, removeBlog } from '../../reducers/sitesReducer'
+import { toggleStatus, removeSite } from '../../reducers/sitesReducer'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Button } from '@material-ui/core'
@@ -32,7 +32,7 @@ const LikedItem = (props) => {
     try {
       const response = await blogService.remove(blogId)
     if (response.status === 204) {
-      dispatch(removeBlog(blogId))
+      dispatch(removeSite(blogId))
       dispatch(initializeUsers())
       dispatch(setNotification(`Blog removed from liked list`))
     } else {

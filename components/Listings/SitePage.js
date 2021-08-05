@@ -15,7 +15,7 @@ const SitePage = () => {
   
   const dispatch = useDispatch()
   //possible bug here, need to refesh the list of blogs
-  const blogs = useSelector(state => state.blogs)
+  const blogs = useSelector(state => state.sites)
 
   const id = useParams().id
   const blog = blogs.find(n => n.id === id)

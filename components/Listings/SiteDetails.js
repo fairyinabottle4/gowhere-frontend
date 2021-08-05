@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import blogService from '../../services/sites'
 import { useDispatch } from 'react-redux'
-import { toggleStatus, initBlogs, removeBlog } from '../../reducers/sitesReducer'
+import { toggleStatus, initSites, removeSite } from '../../reducers/sitesReducer'
 import { setNotification } from '../../reducers/notifReducer'
 import { initializeUsers } from '../../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
@@ -47,7 +47,7 @@ const SiteDetails = ({blog, user}) => {
     try {
       const response = await blogService.remove(blogId)
       if (response.status === 204) {
-        dispatch(removeBlog(blogId))
+        dispatch(removeSite(blogId))
         dispatch(initializeUsers())
         dispatch(setNotification(`Blog ${blog.title} deleted`))
       } else {
@@ -73,7 +73,7 @@ const SiteDetails = ({blog, user}) => {
     const newBlog = await blogService.create(childBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
-    dispatch(initBlogs())
+    dispatch(initSites())
   }
 
   const handleVisited = async () => {
@@ -86,7 +86,7 @@ const SiteDetails = ({blog, user}) => {
     const newBlog = await blogService.create(childBlog)
     // dispatch(createBlog(newBlog))
     dispatch(initializeUsers())
-    dispatch(initBlogs())
+    dispatch(initSites())
   }
 
 

@@ -8,7 +8,7 @@ import currUserReducer from './reducers/currUserReducer'
 import userReducer from './reducers/usersReducer'
 
 const reducer = combineReducers({
-  blogs: sitesReducer,
+  sites: sitesReducer,
   notification: notifReducer,
   currUser: currUserReducer,
   users: userReducer

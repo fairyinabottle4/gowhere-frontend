@@ -8,7 +8,6 @@ import { setNotification } from '../../reducers/notifReducer'
 
 const Homepage = (props) => {
   const currUser = props.user
-  const blogs = useSelector(state => state.blogs)
   const users = useSelector(state => state.users)
   //find the id of the current user
   const userLikes = users?.jsonUser?.find(n => n.username === currUser.username)

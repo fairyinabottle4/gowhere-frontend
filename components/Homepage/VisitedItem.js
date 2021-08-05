@@ -1,5 +1,5 @@
 import blogService from '../../services/sites'
-import { toggleStatus, createBlog, removeBlog } from '../../reducers/sitesReducer'
+import { toggleStatus, createBlog, removeSite } from '../../reducers/sitesReducer'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@material-ui/core'
@@ -31,7 +31,7 @@ const VisitedItem = (props) => {
     try {
       const response = await blogService.remove(blogId)
     if (response.status === 204) {
-      dispatch(removeBlog(blogId))
+      dispatch(removeSite(blogId))
       dispatch(initializeUsers())
       dispatch(setNotification(`Blog removed from visited list`))
     } else {
