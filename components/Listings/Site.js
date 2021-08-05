@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import Togglable from './Togglable'
-import BlogDetails from './BlogDetails'
+import SiteDetails from './SiteDetails'
 import PropTypes from 'prop-types'
 import {
   TableCell,
@@ -31,7 +31,7 @@ const Blog = ({blog, user}) => {
     </TableCell>
     <TableCell>{blog.author}</TableCell>
     <Togglable buttonLabel="view" ref={blogDetailsRef}>
-      <BlogDetails key={blog.id} blog={blog} user={user}/>
+      <SiteDetails key={blog.id} blog={blog} user={user}/>
     </Togglable>
   </div>)  
 }

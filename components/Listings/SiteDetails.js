@@ -7,7 +7,7 @@ import { setNotification } from '../../reducers/notifReducer'
 import { initializeUsers } from '../../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
 
-const BlogDetails = ({blog, user}) => {
+const SiteDetails = ({blog, user}) => {
   const updateBlog = async (blogId, blogObject) => {
     try {
       const updatedBlog = await blogService.update(blogId, blogObject)
@@ -118,8 +118,8 @@ const BlogDetails = ({blog, user}) => {
   )
 }
 
-BlogDetails.propTypes = {
+SiteDetails.propTypes = {
   blog: PropTypes.object.isRequired,
 }
 
-export default BlogDetails
+export default SiteDetails

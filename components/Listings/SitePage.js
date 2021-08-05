@@ -10,7 +10,7 @@ import blogService from '../../services/blogs'
 import { Link, Button, TextField } from '@material-ui/core'  
 import { updateComment } from '../../reducers/blogsReducer'
 
-const BlogPage = () => {
+const SitePage = () => {
   const [newComment, setNewComment] = useState('')
   
   const dispatch = useDispatch()
@@ -60,4 +60,4 @@ const BlogPage = () => {
 }
 
 
-  export default BlogPage
+  export default SitePage

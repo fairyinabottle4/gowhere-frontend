@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react'
-import BlogList from './components/Listings/BlogList'
+import BlogList from './components/Listings/SiteList'
 import Notification from './components/Notification'
 import NewblogForm from './components/NewblogForm'
 import LoginForm from './components/LoginForm'
 import Menu from './components/Menu'
 import About from './components/About'
 import Togglable from './components/Listings/Togglable'
-import BlogPage from './components/Listings/BlogPage'
+import SitePage from './components/Listings/SitePage'
 import UserPage from './components/User'
 import blogService from './services/blogs'
 import Homepage from './components/Homepage/Homepage'
@@ -74,7 +74,7 @@ const App = () => {
               <button onClick={handleLogout}>logout</button>
               <Switch>
                 <Route path='/blogs/:id'>
-                  <BlogPage />
+                  <SitePage />
                 </Route>
                 <Route path='/users/:id'>
                   <UserPage />
