@@ -63,7 +63,7 @@ const SiteDetails = ({site, user}) => {
     const indexCurr = site.userLiked.indexOf(likedList)
     //updatedSite is the parent site. This will have its liked status toggled
     //actually updatedUserLiked can simply use username: user.username and liked: true
-    const updatedUserLiked = { username: likedList.username, liked: !likedList.liked}
+    const updatedUserLiked = { username: likedList?.username, liked: !likedList.liked}
     site.userLiked[indexCurr] = updatedUserLiked
     const updatedSite = {...site, userLiked: site.userLiked}    
     updateSite(site.id, updatedSite)

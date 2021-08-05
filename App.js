@@ -5,8 +5,6 @@ import LoginForm from './components/LoginForm'
 import Menu from './components/Menu'
 import About from './components/About'
 import Togglable from './components/Listings/Togglable'
-import SitePage from './components/Listings/SitePage'
-import UserPage from './components/User'
 import siteService from './services/sites'
 import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,7 +15,6 @@ import {
 import { setCurrUser } from './reducers/currUserReducer'
 import { initSites } from './reducers/sitesReducer'
 import { initializeUsers } from './reducers/usersReducer'
-import UsersTable from './components/UsersTable'
 
 import Container from '@material-ui/core/Container'
 
@@ -64,9 +61,6 @@ const App = () => {
               <p>{user.name} logged in</p>
               <button onClick={handleLogout}>logout</button>
               <Switch>
-                <Route path='/sites/:id'>
-                  <SitePage />
-                </Route>
                 <Route path='/sites'>
                   <SiteList user={user}/>
                 </Route>
