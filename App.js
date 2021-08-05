@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import SiteList from './components/Listings/SiteList'
+import Regions from './components/Listings/RegionList'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import Menu from './components/Menu'
@@ -19,6 +20,7 @@ import { initSites } from './reducers/sitesReducer'
 import { initializeUsers } from './reducers/usersReducer'
 
 import Container from '@material-ui/core/Container'
+import RegionList from './components/Listings/RegionList'
 
 const App = () => {
   const user = useSelector(state => state.currUser)
@@ -64,7 +66,7 @@ const App = () => {
               <button onClick={handleLogout}>logout</button>
               <Switch>
                 <Route path='/sites'>
-                  <SiteList user={user}/>
+                  <RegionList user={user}/>
                 </Route>
                 <Route path='/about'>
                   <About />
