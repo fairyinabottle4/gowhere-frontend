@@ -1,5 +1,5 @@
-import blogService from '../../services/sites'
-import { toggleStatus, createBlog, removeSite } from '../../reducers/sitesReducer'
+import siteService from '../../services/sites'
+import { toggleStatus, createSite, removeSite } from '../../reducers/sitesReducer'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@material-ui/core'
@@ -17,23 +17,23 @@ const VisitedItem = (props) => {
   const parent = visitedPlace.parent
   const indexCurr = parent.userVisited.indexOf(temp)
 
-  const updateBlog = async (blogId, blogObject) => {
+  const updateSite = async (siteId, siteObject) => {
     try {
-      const updatedBlog = await blogService.update(blogId, blogObject)
-      dispatch(toggleStatus(blogId, updatedBlog))
-      // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
+      const updatedSite = await siteService.update(siteId, siteObject)
+      dispatch(toggleStatus(siteId, updatedSite))
+      // dispatch(setNotification(`One like added to ${updatedSite.title}`))
     } catch (exception) {
-      dispatch(setNotification("Could not update blog"))
+      dispatch(setNotification("Could not update site"))
     }
   }
 
-  const deleteBlog = async (blogId) => {
+  const deleteSite = async (siteId) => {
     try {
-      const response = await blogService.remove(blogId)
+      const response = await siteService.remove(siteId)
     if (response.status === 204) {
-      dispatch(removeSite(blogId))
+      dispatch(removeSite(siteId))
       dispatch(initializeUsers())
-      dispatch(setNotification(`Blog removed from visited list`))
+      dispatch(setNotification(`Site removed from visited list`))
     } else {
         dispatch(setNotification('could not remove'))
     }
@@ -43,8 +43,8 @@ const VisitedItem = (props) => {
   }
 
   const handleDelete = async () => {
-    if (window.confirm(`Remove blog ${visitedPlace.title}?`)) {
-      const original = await blogService.getSingle(parent.id)
+    if (window.confirm(`Remove site ${visitedPlace.title}?`)) {
+      const original = await siteService.getSingle(parent.id)
       const tempLiked = original.userLiked.find(n => n.username === user.username)
       const currLikedStatus = tempLiked.liked
       const indexLiked = original.userLiked.indexOf(tempLiked)
@@ -52,9 +52,9 @@ const VisitedItem = (props) => {
       const updatedUserLiked = { username: user.username, liked: currLikedStatus}
       original.userLiked[indexLiked] = updatedUserLiked
       parent.userVisited[indexCurr] = updatedUserVisited
-      const updatedParentBlog = {...parent, userLiked: original.userLiked, userVisited: parent.userVisited}
-      updateBlog(parent.id, updatedParentBlog)
-      deleteBlog(visitedPlaceId)
+      const updatedParentSite = {...parent, userLiked: original.userLiked, userVisited: parent.userVisited}
+      updateSite(parent.id, updatedParentSite)
+      deleteSite(visitedPlaceId)
     }
   }
 

@@ -1,4 +1,4 @@
-import blogService from '../../services/sites'
+import siteService from '../../services/sites'
 import { toggleStatus, removeSite } from '../../reducers/sitesReducer'
 import React from 'react'
 import { useDispatch } from 'react-redux'
@@ -18,23 +18,23 @@ const LikedItem = (props) => {
 
   const likedPlaceId = props.id
 
-  const updateBlog = async (blogId, blogObject) => {
+  const updateSite = async (siteId, siteObject) => {
     try {
-      const updatedBlog = await blogService.update(blogId, blogObject)
-      dispatch(toggleStatus(blogId, updatedBlog))
-      // dispatch(setNotification(`One like added to ${updatedBlog.title}`))
+      const updatedSite = await siteService.update(siteId, siteObject)
+      dispatch(toggleStatus(siteId, updatedSite))
+      // dispatch(setNotification(`One like added to ${updatedSite.title}`))
     } catch (exception) {
-      dispatch(setNotification("Could not update blog"))
+      dispatch(setNotification("Could not update site"))
     }
   }
 
-  const deleteBlog = async (blogId) => {
+  const deleteSite = async (siteId) => {
     try {
-      const response = await blogService.remove(blogId)
+      const response = await siteService.remove(siteId)
     if (response.status === 204) {
-      dispatch(removeSite(blogId))
+      dispatch(removeSite(siteId))
       dispatch(initializeUsers())
-      dispatch(setNotification(`Blog removed from liked list`))
+      dispatch(setNotification(`Site removed from liked list`))
     } else {
         dispatch(setNotification('could not remove'))
     }
@@ -45,8 +45,8 @@ const LikedItem = (props) => {
 
 
   const handleDelete = async () => {
-      if (window.confirm(`Remove blog ${likedPlace.title}?`)) {
-        const original = await blogService.getSingle(parent.id)
+      if (window.confirm(`Remove site ${likedPlace.title}?`)) {
+        const original = await siteService.getSingle(parent.id)
         const tempVisited = original.userVisited.find(n => n.username === user.username)
         const currVisitStatus = tempVisited.visited
         const indexVisited = original.userVisited.indexOf(tempVisited)
@@ -54,9 +54,9 @@ const LikedItem = (props) => {
         const updatedUserLiked = { username: user.username, liked: false}
         parent.userLiked[indexCurr] = updatedUserLiked
         original.userVisited[indexVisited] = updatedUserVisited
-        const updatedParentBlog = {...parent, userLiked: parent.userLiked, userVisited: original.userVisited}
-        updateBlog(parent.id, updatedParentBlog)
-        deleteBlog(likedPlaceId)
+        const updatedParentSite = {...parent, userLiked: parent.userLiked, userVisited: original.userVisited}
+        updateSite(parent.id, updatedParentSite)
+        deleteSite(likedPlaceId)
       }
   }
 

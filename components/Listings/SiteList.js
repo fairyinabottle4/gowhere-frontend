@@ -7,20 +7,20 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Blog from './Site'
+import Site from './Site'
 
 const SiteList = ({user}) => {
-  const blogs = useSelector(state => state.sites)
-  //Remove child blogs
-  const filteredBlogs = blogs.filter(p => p.parent === null)
+  const sites = useSelector(state => state.sites)
+  //Remove child sites
+  const filteredSites = sites.filter(p => p.parent === null)
   return (
     <div>
       <TableContainer component={Paper}>
         <Table>
           <TableBody>
-              {filteredBlogs.map(blog => 
-              <TableRow key={blog.id}>
-                  <Blog blog={blog} user={user} />
+              {filteredSites.map(site => 
+              <TableRow key={site.id}>
+                  <Site site={site} user={user} />
               </TableRow>
               
               )}

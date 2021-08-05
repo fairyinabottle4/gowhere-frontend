@@ -11,8 +11,8 @@ import {
 } from "react-router-dom"
 
 
-const Blog = ({blog, user}) => {
-  const blogStyle = {
+const Site = ({site, user}) => {
+  const siteStyle = {
     paddingTop: 10,
     paddingLeft: 2,
     border: 'solid',
@@ -20,24 +20,24 @@ const Blog = ({blog, user}) => {
     marginBottom: 5
   }
 
-  const blogDetailsRef = useRef()
+  const siteDetailsRef = useRef()
 
   return (
-  <div style={blogStyle} className='blog'>
-    <TableCell className='blog-title-author'>
-      <Link to={`/blogs/${blog.id}`}>
-      {blog.title} 
+  <div style={siteStyle} className='site'>
+    <TableCell className='site-title-author'>
+      <Link to={`/sites/${site.id}`}>
+      {site.title} 
       </Link>
     </TableCell>
-    <TableCell>{blog.author}</TableCell>
-    <Togglable buttonLabel="view" ref={blogDetailsRef}>
-      <SiteDetails key={blog.id} blog={blog} user={user}/>
+    <TableCell>{site.author}</TableCell>
+    <Togglable buttonLabel="view" ref={siteDetailsRef}>
+      <SiteDetails key={site.id} site={site} user={user}/>
     </Togglable>
   </div>)  
 }
 
-Blog.propTypes = {
-  blog: PropTypes.object.isRequired,
+Site.propTypes = {
+  site: PropTypes.object.isRequired,
 }
 
-export default Blog
+export default Site
