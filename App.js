@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from 'react'
-import BlogList from './components/Listings/SiteList'
+import SiteList from './components/Listings/SiteList'
 import Notification from './components/Notification'
-import NewblogForm from './components/NewblogForm'
 import LoginForm from './components/LoginForm'
 import Menu from './components/Menu'
 import About from './components/About'
 import Togglable from './components/Listings/Togglable'
 import SitePage from './components/Listings/SitePage'
 import UserPage from './components/User'
-import blogService from './services/sites'
+import siteService from './services/sites'
 import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -41,17 +40,9 @@ const App = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       dispatch(setCurrUser(user))
-      blogService.setToken(user.token)
+      siteService.setToken(user.token)
     }
   }, [])  
-
-  const blogFormRef = useRef()
-  //this should be moved to a separate component
-  const blogForm = () => (
-    <Togglable buttonLabel="new blog" ref={blogFormRef}>
-      <NewblogForm />
-    </Togglable>
-  )
 
   const handleLogout = () => {
     window.localStorage.removeItem('loggedSiteappUser')
@@ -68,7 +59,7 @@ const App = () => {
           {user === null ?
             <LoginForm /> :
             <div>
-              <h2>blogs</h2>
+              <h2>sites</h2>
               <Menu />
               <p>{user.name} logged in</p>
               <button onClick={handleLogout}>logout</button>
@@ -76,18 +67,8 @@ const App = () => {
                 <Route path='/sites/:id'>
                   <SitePage />
                 </Route>
-                <Route path='/users/:id'>
-                  <UserPage />
-                </Route>
-                <Route path='/users'>
-                  <UsersTable />
-                </Route>
                 <Route path='/sites'>
-                  <BlogList user={user}/>
-                </Route>
-                <Route path='/create-new'>
-                  <h2>create new</h2>
-                  {blogForm()}
+                  <SiteList user={user}/>
                 </Route>
                 <Route path='/about'>
                   <About />

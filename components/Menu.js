@@ -12,10 +12,8 @@ const Menu = () => {
     return (
       <div>
         <Link to='/' style={padding}>home</Link>
-        <Link to='/sites' style={padding}>blogs</Link>
-        <Link to='/users' style={padding}>users</Link>
+        <Link to='/sites' style={padding}>sites</Link>
         <Link to='/about' style={padding}>about</Link>
-        <Link to='/create-new' style={padding}>create new</Link>
       </div>
     )
   }    
