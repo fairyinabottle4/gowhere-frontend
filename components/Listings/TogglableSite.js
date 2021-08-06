@@ -5,11 +5,6 @@ import { Button } from '@material-ui/core'
 const TogglableSite = React.forwardRef((props, ref) => {
     
   const [visible, setVisible] = useState(false)
-//   const [action, setAction] = useState(false)
-
-//   useEffect(() => {
-//       toggleVisibility()
-//   },[action])
 
   console.log(props.level)
   console.log(visible)
@@ -20,16 +15,6 @@ const TogglableSite = React.forwardRef((props, ref) => {
   const toggleVisibility = () => {
     setVisible(!visible)
   }
-
-  const setVisTrueSite = () => {
-    setVisible(true)
-  }
-
-  useImperativeHandle(ref, () => {
-    return {
-      setVisTrueSite
-    }
-  })
 
   return (
     <div>

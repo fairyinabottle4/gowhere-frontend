@@ -14,8 +14,6 @@ const SiteDetails = ({site, user}) => {
   const updateSite = async (siteId, siteObject) => {
     try {
       const updatedSite = await siteService.update(siteId, siteObject)
-      // dispatch(toggleStatus(siteId, updatedSite))
-      // dispatch(setNotification(`One like added to ${updatedSite.title}`))
     } catch (exception) {
       console.log(exception)
       dispatch(setNotification("Could not update site"))

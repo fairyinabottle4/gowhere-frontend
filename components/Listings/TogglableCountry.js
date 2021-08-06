@@ -5,14 +5,6 @@ import { Button } from '@material-ui/core'
 const TogglableCountry = React.forwardRef((props, ref) => {
     
   const [visible, setVisible] = useState(false)
-//   const [action, setAction] = useState(false)
-
-//   useEffect(() => {
-//       toggleVisibility()
-//   },[action])
-
-  console.log(props.level)
-  console.log(visible)
 
   const hideWhenVisible = { display: visible ? 'none' : '' }
   const showWhenVisible = { display: visible ? '' : 'none' }
@@ -20,17 +12,6 @@ const TogglableCountry = React.forwardRef((props, ref) => {
   const toggleVisibility = () => {
     setVisible(!visible)
   }
-
-  const setVisTrueCountry = () => {
-    setAction(!action)
-    setVisible(true)
-  }
-
-  useImperativeHandle(ref, () => {
-    return {
-      setVisTrueCountry
-    }
-  })
 
   return (
     <div>

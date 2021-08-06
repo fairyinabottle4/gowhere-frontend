@@ -23,9 +23,6 @@ const LikeButton = React.forwardRef((props, ref) => {
   const [liked, setLiked] = useState(likedList?.liked)
 
   const handleLike = async () => {
-    // ref[0].current.setVisTrue()
-    // ref[1].current.setVisTrueCountry()
-    // ref[2].current.setVisTrueSite()
     const indexCurr = props.site.userLiked.indexOf(likedList)
     //updatedSite is the parent site. This will have its liked status toggled
     //actually updatedUserLiked can simply use username: user.username and liked: true
@@ -37,11 +34,8 @@ const LikeButton = React.forwardRef((props, ref) => {
     //it will contain a parent, which is the updatedSite
     const childSite = {...props.site, parent: updatedSite, opcode: 100}
     const newSite = await siteService.create(childSite)
-    // dispatch(createSite(newSite))
     dispatch(initializeUsers())
     setLiked(!liked)
-
-    // dispatch(initSites())
   }
 
 
