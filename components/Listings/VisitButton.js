@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import siteService from '../../services/sites'
 import { useDispatch } from 'react-redux'
@@ -21,7 +21,9 @@ const VisitButton = ({site, user, updateSite}) => {
       updateSite(site.id, updatedSite)  
     }  
   },[])
-  const visited = visitedList?.visited
+  // const visited = visitedList?.visited
+
+  const [visited, setVisited] = useState(visitedList?.visited)
 
   const handleVisited = async () => {
     const indexCurr = site.userVisited.indexOf(visitedList)
@@ -33,7 +35,8 @@ const VisitButton = ({site, user, updateSite}) => {
     const newSite = await siteService.create(childSite)
     // dispatch(createSite(newSite))
     dispatch(initializeUsers())
-    dispatch(initSites())
+    // dispatch(initSites())
+    setVisited(!visited)
   }
 
   return (
