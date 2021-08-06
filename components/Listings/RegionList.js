@@ -24,6 +24,10 @@ const RegionList = ({ user }) => {
   const filteredSites = sites.filter(p => p.parent === null)
   const asiaSites = filteredSites.filter(s => s.region === "Asia-Pacific")
   const sortedAsiaSites = asiaSites.sort((a,b) => sortByCountry(a,b))
+
+  const europeSites = filteredSites.filter(s => s.region === "Europe")
+  const sortedEuropeSites = europeSites.sort((a,b) => sortByCountry(a,b))
+
   const siteDetailsRef = useRef()
 
   const AsiaTogg = () => {
@@ -34,11 +38,23 @@ const RegionList = ({ user }) => {
     )
   }
 
+  const EuropeTogg = () => {
+    return (
+      <div>
+        {sortedEuropeSites.map(c => <Country site={c} user={user} />)}
+      </div>
+    )
+  }
+
   return (
     <div style={regionContainer}>
       <h1 style={regionName}>Asia-Pacific</h1>
       <Togglable buttonLabel="view asia-pacific" ref={siteDetailsRef} style={regionViewButton}>
         <AsiaTogg />
+      </Togglable>
+      <h1 style={regionName}>Europe</h1>
+      <Togglable buttonLabel="view europe" ref={siteDetailsRef} style={regionViewButton}>
+        <EuropeTogg />
       </Togglable>
     </div>
 
@@ -50,10 +66,12 @@ export default RegionList
 
 const regionContainer = {
   border: '2px solid green',
+  backgroundColor: '#c2c2c2'
 }
 
 const regionName = {
   border: '2px solid red',
+  backgroundColor: '#c2c2c2'
 }
 
 const regionViewButton = {

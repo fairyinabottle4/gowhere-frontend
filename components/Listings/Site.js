@@ -19,7 +19,7 @@ const Site = React.forwardRef((props, ref) => {
   <div style={siteContainer}>
     <TableCell style={siteNameContainer}>
       <p style={siteName}>{props.site.title} </p>
-      <TogglableSite buttonLabel="view site" level="detail" ref={siteRef}>
+      <TogglableSite buttonLabel="view site" level="detail" ref={siteRef} title={props.site.title}>
         <SiteDetails key={props.site.id} site={props.site} user={props.user} 
           ref={combinedRef} />
       </TogglableSite>
@@ -39,15 +39,10 @@ const siteContainer = {
 
 const siteNameContainer = {
   border: '2px solid yellow',
-  display: 'flex'
 }
 
 const siteName = {
-  border: '2px solid red',
-  fontSize: '20px'
-}
-
-const description = {
-  border: '2px solid red'
+  border: '2px solid purple',
+  fontSize: '20px',
 }
 

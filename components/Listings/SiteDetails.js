@@ -28,6 +28,7 @@ const SiteDetails = ({site, user}) => {
         <LikeButton user={user} site={site} updateSite={updateSite} />
         <VisitButton user={user} site={site} updateSite={updateSite} />
       </h2>
+      <h3>Description</h3>
       <p>{site.description}</p>
       <img src={site.imageUrl} alt={"Image could not be loaded"} />
     </div>

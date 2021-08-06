@@ -10,7 +10,9 @@ const TogglableSite = React.forwardRef((props, ref) => {
   console.log(visible)
 
   const hideWhenVisible = { display: visible ? 'none' : '' }
-  const showWhenVisible = { display: visible ? '' : 'none' }
+  const showWhenVisible = { 
+    display: visible ? '' : 'none',
+  }
 
   const toggleVisibility = () => {
     setVisible(!visible)
@@ -23,7 +25,8 @@ const TogglableSite = React.forwardRef((props, ref) => {
       </div>
       <div style={showWhenVisible}>
         {props.children}
-        <Button size='small' variant='contained' color='secondary' onClick={toggleVisibility}>{props.buttonLabel === "view" ? "hide" : "cancel"}
+        <Button size='small' variant='contained' color='secondary' 
+          onClick={toggleVisibility}>{props.buttonLabel === "view" ? "hide" : `hide ${props.title}`}
         </Button>
       </div>
     </div>
