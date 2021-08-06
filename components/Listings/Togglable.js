@@ -14,14 +14,15 @@ const Togglable = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div>
-      <div style={hideWhenVisible}>
-        <Button size='small' variant='contained' color='primary' onClick={toggleVisibility}>{props.buttonLabel}</Button>
-      </div>
+    <div style={container}>
       <div style={showWhenVisible}>
         {props.children}
-        <Button size='small' variant='contained' color='secondary' onClick={toggleVisibility}>{props.buttonLabel === "view" ? "hide" : "cancel"}
+        <Button size='small' variant='contained' color='secondary' 
+                onClick={toggleVisibility}>{props.buttonLabel === "view asia-pacific" ? "hide asia-pacific" : "cancel"}
         </Button>
+      </div>
+      <div style={hideWhenVisible}>
+        <Button size='small' variant='contained' color='primary' onClick={toggleVisibility}>{props.buttonLabel}</Button>
       </div>
     </div>
   )
@@ -34,3 +35,9 @@ Togglable.propTypes = {
 Togglable.displayName = 'Togglable'
 
 export default Togglable
+
+
+const container = {
+  border: '2px solid red',
+  backgroundColor: '#f5f5f5'
+}

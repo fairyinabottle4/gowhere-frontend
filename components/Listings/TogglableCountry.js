@@ -20,7 +20,7 @@ const TogglableCountry = React.forwardRef((props, ref) => {
       </div>
       <div style={showWhenVisible}>
         {props.children}
-        <Button size='small' variant='contained' color='secondary' onClick={toggleVisibility}>{props.buttonLabel === "view" ? "hide" : "cancel"}
+        <Button size='small' variant='contained' color='secondary' onClick={toggleVisibility}>{props.buttonLabel === `view ${props.country}` ? `hide ${props.country}` : "cancel"}
         </Button>
       </div>
     </div>

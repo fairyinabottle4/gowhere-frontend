@@ -5,24 +5,11 @@ import Site from './Site'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import Country from './Country'
+import { FormHelperText } from '@material-ui/core'
 
 
 const RegionList = ({ user }) => {
-  const regions = ["Africa", "Asia-Pacific", "Arab States", "Europe and North America",
-    "Latin America and the Carribean"]
-
-    const siteStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: 'solid',
-    borderWidth: 1,
-    marginBottom: 5
-  }
-  const sites = useSelector(state => state.sites)
-  //Remove child sites
-  const filteredSites = sites.filter(p => p.parent === null)
-  const asiaSites = filteredSites.filter(s => s.region === "Asia-Pacific")
-  const sortedAsiaSites = asiaSites.sort((a,b) => {
+  const sortByCountry = (a,b) => {
     if (a.author < b.author) {
       return -1
     }
@@ -30,7 +17,13 @@ const RegionList = ({ user }) => {
       return 1
     } 
     return 0
-  })
+  }
+
+  const sites = useSelector(state => state.sites)
+  //Remove child sites
+  const filteredSites = sites.filter(p => p.parent === null)
+  const asiaSites = filteredSites.filter(s => s.region === "Asia-Pacific")
+  const sortedAsiaSites = asiaSites.sort((a,b) => sortByCountry(a,b))
   const siteDetailsRef = useRef()
 
   const AsiaTogg = () => {
@@ -42,9 +35,9 @@ const RegionList = ({ user }) => {
   }
 
   return (
-    <div>
-      <h2>Asia-Pacific</h2>
-      <Togglable buttonLabel="view" ref={siteDetailsRef}>
+    <div style={regionContainer}>
+      <h1 style={regionName}>Asia-Pacific</h1>
+      <Togglable buttonLabel="view asia-pacific" ref={siteDetailsRef} style={regionViewButton}>
         <AsiaTogg />
       </Togglable>
     </div>
@@ -54,3 +47,15 @@ const RegionList = ({ user }) => {
 }
 
 export default RegionList
+
+const regionContainer = {
+  border: '2px solid green',
+}
+
+const regionName = {
+  border: '2px solid red',
+}
+
+const regionViewButton = {
+  border: '2px solid red',
+}

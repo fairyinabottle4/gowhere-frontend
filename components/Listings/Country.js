@@ -9,14 +9,15 @@ import {
 
 const Country = React.forwardRef((props, ref) => {
   const countryRef = useRef()
-  console.log
   const combinedRef = [ref, countryRef]
   return (
     <div>
-      <TableCell>
+      <h1>
         {props.site.author}
-      </TableCell>
-      <TogglableCountry buttonLabel="view" level="country" ref={countryRef}>
+      </h1>
+      <TogglableCountry 
+        buttonLabel={`view ${props.site.author}`} level="country" 
+        ref={countryRef} country={props.site.author}>
         <Site site={props.site} user={props.user} ref={combinedRef} />
       </TogglableCountry>
     </div>
