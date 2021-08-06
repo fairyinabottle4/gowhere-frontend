@@ -4,22 +4,7 @@ import SiteList from './SiteList'
 import Site from './Site'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
-import {
-  Table,
-  TableBody,
-  TableContainer,
-  TableRow,
-  Paper,
-  Hidden
-} from '@material-ui/core'
-
-import {
-  TableCell,
-} from '@material-ui/core'
-import {
-  BrowserRouter as Router,
-  Link,
-} from "react-router-dom"
+import Country from './Country'
 
 
 const RegionList = ({ user }) => {
@@ -47,20 +32,6 @@ const RegionList = ({ user }) => {
     return 0
   })
   const siteDetailsRef = useRef()
-
-
-  const Country = ({site, user}) => {
-    return (
-      <div>
-        <TableCell>
-          {site.author}
-        </TableCell>
-        <Togglable buttonLabel="view">
-          <Site site={site} user={user} />
-        </Togglable>
-      </div>
-    )
-  }
 
   const AsiaTogg = () => {
     return (

@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import Togglable from './Togglable'
+import TogglableSite from './TogglableSite'
 import SiteDetails from './SiteDetails'
 import PropTypes from 'prop-types'
 import {
@@ -11,7 +11,7 @@ import {
 } from "react-router-dom"
 
 
-const Site = ({site, user}) => {
+const Site = React.forwardRef((props, ref) => {
   const siteStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -19,22 +19,22 @@ const Site = ({site, user}) => {
     borderWidth: 1,
     marginBottom: 5
   }
-
-  const siteDetailsRef = useRef()
-
+  const siteRef = useRef()
+  const combinedRef = ref.concat(siteRef)
   return (
   <div style={siteStyle} className='site'>
     <TableCell className='site-title-author'>
-      <Link to={`/sites/${site.id}`}>
-      {site.title} 
+      <Link to={`/sites/${props.site.id}`}>
+      {props.site.title} 
       </Link>
     </TableCell>
-    <TableCell>{site.author}</TableCell>
-    <Togglable buttonLabel="view" ref={siteDetailsRef}>
-      <SiteDetails key={site.id} site={site} user={user}/>
-    </Togglable>
+    <TableCell>{props.site.author}</TableCell>
+    <TogglableSite buttonLabel="view" level="detail" ref={siteRef}>
+      <SiteDetails key={props.site.id} site={props.site} user={props.user} 
+        ref={combinedRef} />
+    </TogglableSite>
   </div>)  
-}
+})
 
 Site.propTypes = {
   site: PropTypes.object.isRequired,
