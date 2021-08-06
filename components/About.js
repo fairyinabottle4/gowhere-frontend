@@ -1,3 +1,5 @@
+import image from '../res/display_pic.jpg'
+
 const About = () => (
   <div>
     <h2>About Unesco go where</h2>
@@ -33,7 +35,7 @@ const About = () => (
 
     <h2>About the creator</h2>
     <img 
-      src='https://drive.google.com/uc?export=view&id=1YjqZrdCFwTd9Im7P1VptzcDtg4_laB_W'
+      src={image}
       height='400px'
       />
 
@@ -53,6 +55,8 @@ const About = () => (
 
   </div>
 )
+
+//alternative link to image: https://drive.google.com/uc?export=view&id=1YjqZrdCFwTd9Im7P1VptzcDtg4_laB_W
 
 export default About
 
