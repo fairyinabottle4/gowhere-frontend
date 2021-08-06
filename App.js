@@ -93,6 +93,7 @@ const App = () => {
 const topStyle = {
   border: '2px solid red',
   display: 'flex',
+  backgroundColor: '#81d4fa'
 }
 
 const headerStyle = {
@@ -109,6 +110,7 @@ const usernameStyle = {
 }
 
 const logoutStyle = {
+  backgroundColor: '#81d4fa',
   height: '50%',
   marginTop: '2em',
   border: '2px solid red',
