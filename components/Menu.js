@@ -1,3 +1,4 @@
+import { green } from "@material-ui/core/colors"
 import {
     BrowserRouter as Router, Link,
   } from "react-router-dom"
@@ -6,17 +7,29 @@ import {
 
 
 const Menu = () => {
-    const padding = {
-      paddingRight: 5
-    }
-    return (
-      <div>
-        <Link to='/' style={padding}>home</Link>
-        <Link to='/sites' style={padding}>sites</Link>
-        <Link to='/search' style={padding}>search</Link>
-        <Link to='/about' style={padding}>about</Link>
-      </div>
-    )
-  }    
+  const linkStyle = {
+    flex: 1,
+    paddingRight: '5em',
+    color: 'green',
+    fontStyle: 'italic',
+    border: '2px solid red',
+    textAlign: 'center',
+    fontSize: 24
+  }
+
+  const topNavStyle = {
+    // backgroundColor: 'blue',
+    border: '2px solid red',
+    textAlign: 'center'
+  }
+  return (
+    <div style={topNavStyle}>
+      <Link to='/' style={linkStyle}>home</Link>
+      <Link to='/sites' style={linkStyle}>sites</Link>
+      <Link to='/search' style={linkStyle}>search</Link>
+      <Link to='/about' style={linkStyle}>about</Link>
+    </div>
+  )
+}    
 
   export default Menu

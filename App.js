@@ -60,10 +60,12 @@ const App = () => {
           {user === null ?
             <LoginForm /> :
             <div>
-              <h2>sites</h2>
+              <div style={topStyle}>
+                <h2 style={headerStyle}>Unesco go where?</h2>
+                <p style={usernameStyle}>{user.name} logged in</p>
+                <button onClick={handleLogout} style={logoutStyle}>logout</button>
+              </div>
               <Menu />
-              <p>{user.name} logged in</p>
-              <button onClick={handleLogout}>logout</button>
               <Switch>
                 <Route path='/sites'>
                   <RegionList user={user}/>
@@ -86,6 +88,32 @@ const App = () => {
 
     </Router>
   )
+}
+
+const topStyle = {
+  border: '2px solid red',
+  display: 'flex',
+}
+
+const headerStyle = {
+  border: '2px solid red',
+  color: 'black',
+  fontStyle: 'italic',
+  flexGrow: 1,
+  fontSize: '24px'
+}
+
+const usernameStyle = {
+  border: '2px solid red',
+  paddingTop: '1em'
+}
+
+const logoutStyle = {
+  height: '50%',
+  marginTop: '2em',
+  border: '2px solid red',
+  textAlign: 'center',
+  color: 'blue'
 }
 
 export default App
