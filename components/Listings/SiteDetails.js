@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import siteService from '../../services/sites'
 import { useDispatch } from 'react-redux'
-import { toggleStatus, initSites, removeSite } from '../../reducers/sitesReducer'
+import { toggleStatus, initSites } from '../../reducers/sitesReducer'
 import { setNotification } from '../../reducers/notifReducer'
 import { initializeUsers } from '../../reducers/usersReducer'
 import { Button, Link } from '@material-ui/core'
@@ -43,22 +43,6 @@ const SiteDetails = ({site, user}) => {
   const liked = likedList?.liked
   const visited = visitedList?.visited
 
-  const deleteSite = async (siteId) => {
-    try {
-      const response = await siteService.remove(siteId)
-      if (response.status === 204) {
-        dispatch(removeSite(siteId))
-        dispatch(initializeUsers())
-        dispatch(setNotification(`Site ${site.title} deleted`))
-      } else {
-        dispatch(setNotification("Could not delete site"))
-      }
-    } catch (exception) {
-      dispatch(setNotification("Could not delete site"))
-    }
-  }
-
-
   const handleLike = async () => {
     const indexCurr = site.userLiked.indexOf(likedList)
     //updatedSite is the parent site. This will have its liked status toggled
@@ -89,12 +73,6 @@ const SiteDetails = ({site, user}) => {
     dispatch(initSites())
   }
 
-
-  const handleDelete = () => {
-    if (window.confirm(`Remove site ${site.title} by ${site.author}?`)) {
-      deleteSite(site.id)
-    }
-  }
   return (
     <div className='site-details'>
       <Link href={site.url}>{site.url}</Link>
@@ -113,7 +91,6 @@ const SiteDetails = ({site, user}) => {
       </h2>
       <p>{site.description}</p>
       <img src={site.imageUrl} alt={"Image could not be loaded"} />
-      <Button size='small' variant='contained' color='inherit' onClick={handleDelete}>remove</Button>
     </div>
   )
 }
