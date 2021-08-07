@@ -38,8 +38,8 @@ const Homepage = (props) => {
           </div>
           {likedPlaces?.map(place => <LikedItem id={place.id} likedPlace={place} user={currUser}/>)}
         </div>
-        <div>
-          <h2>Places I visited</h2>
+        <div style={visitContainer}>
+          <h2 style={visitedPlacesTitle}>Places I visited</h2>
           {visitedPlaces?.map(place => <VisitedItem id={place.id} visitedPlace={place} user={currUser} />)}
         </div>
       </div>
@@ -56,16 +56,23 @@ const homeContainer = {
 
 const likeContainer = {
   border: '2px solid',
-  backgroundColor: '#ffc4ff'
+  backgroundColor: '#ffc4ff',
 }
 
 const visitContainer = {
   border: '2px solid red',
+  backgroundColor: '#66ffa6',
+  flexGrow: 1
 }
 
 const likedPlacesTitle = {
   backgroundColor: '#ce93d8',
   textAlign: 'center'
+}
+
+const visitedPlacesTitle = {
+  textAlign: 'center',
+  backgroundColor: '#00e676'
 }
 
 const likedStatsContainer = {

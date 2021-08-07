@@ -80,5 +80,6 @@ const likedContainer = {
 }
 
 const title = {
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  wordBreak: 'break-word'
 }

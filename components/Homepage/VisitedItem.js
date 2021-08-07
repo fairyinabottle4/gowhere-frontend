@@ -59,9 +59,10 @@ const VisitedItem = (props) => {
   }
 
   return (
-    <div>
+    <div style={visitedContainer}>
       <p>{visitedPlace.title}</p>
-      <Button onClick={handleDelete}>remove from visited</Button>
+      <Button onClick={handleDelete} size='small'
+        variant='contained' color={'secondary'}>remove from visited</Button>
     </div>
   )
 
@@ -69,3 +70,10 @@ const VisitedItem = (props) => {
 
 
 export default VisitedItem
+
+const visitedContainer = {
+  border: '2px solid',
+  overflowX: 'hidden',
+  overflowY: 'auto',
+  // display: 'flex'
+}
