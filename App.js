@@ -10,6 +10,7 @@ import siteService from './services/sites'
 import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
 import Search from './components/Search'
+import background from './res/machu_pichu.jpg'
 
 import {
   BrowserRouter as Router,
@@ -54,7 +55,7 @@ const App = () => {
   
   return (
     <Router>
-      <Container style={styles.container}>
+      <Container style={user === null ? styles.containerWithImage : styles.container} maxWidth={user === null ? 'xl' : 'lg'}>
         <div>
           {notification !== '' ? <Notification /> : null}
           {user === null ?
@@ -91,9 +92,17 @@ const App = () => {
 }
 
 const styles = {
+  containerWithImage: {
+    height: 1356,
+    backgroundColor: '#f5f5f5',
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover'
+
+  },
   container: {
     height: 1356,
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#f5f5f5',
+    backgroundSize: 'cover'
   }
 }
 
