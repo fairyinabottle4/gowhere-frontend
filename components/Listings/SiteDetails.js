@@ -40,3 +40,4 @@ SiteDetails.propTypes = {
 }
 
 export default SiteDetails
+

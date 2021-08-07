@@ -76,10 +76,10 @@ const likedContainer = {
   border: '2px solid',
   overflowX: 'hidden',
   overflowY: 'auto',
-  // display: 'flex'
 }
 
 const title = {
   flexWrap: 'wrap',
-  wordBreak: 'break-word'
+  wordBreak: 'break-word',
+  fontFamily: "Roboto"
 }

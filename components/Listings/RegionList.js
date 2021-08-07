@@ -88,9 +88,10 @@ const regionContainer = {
 
 const regionName = {
   border: '2px solid red',
-  backgroundColor: '#c2c2c2'
+  backgroundColor: '#c2c2c2',
+  fontFamily: "Roboto"
 }
 
 const regionViewButton = {
-  border: '2px solid red',
+  
 }

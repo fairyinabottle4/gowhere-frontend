@@ -12,7 +12,7 @@ const Country = React.forwardRef((props, ref) => {
   const combinedRef = [ref, countryRef]
   return (
     <div>
-      <h1>
+      <h1 style={countryName}>
         {props.site.country}
       </h1>
       <TogglableCountry 
@@ -25,3 +25,9 @@ const Country = React.forwardRef((props, ref) => {
 })
 
 export default Country
+
+
+const countryName = {
+  fontFamily: "Roboto",
+  backgroundColor: "#f5f5f5"
+}

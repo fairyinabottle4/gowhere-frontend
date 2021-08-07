@@ -23,15 +23,15 @@ const Homepage = (props) => {
       <h2 style={titleStyle}>Where would you like to go today?</h2>
       <div style={likedStatsContainer}>
         <p style={likedStats}>You have liked {likedPlaces?.length} / 1144 places</p>
-        {likedPlaces.length === 0 ? <p>There's something for everyone here!</p> : 
-            likedPlaces.length < 10 ? <p> Have you planned your next trip?</p>
-            : <p>Woah explorer! Take it easy!</p>}
+        {likedPlaces.length === 0 ? <p style={likedStatsComments}>There's something for everyone here!</p> 
+            :  likedPlaces.length < 10 ? <p style={likedStatsComments}> Have you planned your next trip?</p>
+            : <p style={likedStatsComments}>Woah explorer! Take it easy!</p>}
       </div>
       <div style={likedStatsContainer}>
         <p style={likedStats}>You have visited {visitedPlaces?.length} / 1144 places</p>
-        {visitedPlaces.length === 0 ? <p>A great journey begins with a single step!</p>
-            : visitedPlaces.length < 500 ? <p>Making good progress, traveller!</p> 
-            : <p>You could write a book now!</p>}
+        {visitedPlaces.length === 0 ? <p style={likedStatsComments}>A great journey begins with a single step!</p>
+            : visitedPlaces.length < 500 ? <p style={likedStatsComments}>Making good progress, traveller!</p> 
+            : <p style={likedStatsComments}>You could write a book now!</p>}
       </div>
       <div style={homeContainer}>
         <div style={likeContainer}>
@@ -94,5 +94,5 @@ const likedStats = {
 }
 
 const likedStatsComments = {
-
+  fontFamily: "Roboto"
 }

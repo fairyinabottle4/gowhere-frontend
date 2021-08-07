@@ -62,5 +62,6 @@ const About = () => (
 export default About
 
 const paragraphText = {
-  fontSize: '20px'
+  fontSize: '20px',
+  fontFamily: "Roboto"
 }

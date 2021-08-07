@@ -60,7 +60,7 @@ const VisitedItem = (props) => {
 
   return (
     <div style={visitedContainer}>
-      <p>{visitedPlace.title}</p>
+      <p style={name}>{visitedPlace.title}</p>
       <Button onClick={handleDelete} size='small'
         variant='contained' color={'secondary'}>remove from visited</Button>
     </div>
@@ -76,4 +76,8 @@ const visitedContainer = {
   overflowX: 'hidden',
   overflowY: 'auto',
   // display: 'flex'
+}
+
+const name = {
+  fontFamily: "Roboto"
 }
