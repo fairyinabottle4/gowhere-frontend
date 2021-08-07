@@ -28,6 +28,10 @@ const RegionList = ({ user }) => {
   const europeSites = filteredSites.filter(s => s.region === "Europe")
   const sortedEuropeSites = europeSites.sort((a,b) => sortByCountry(a,b))
 
+  const africaSites = filteredSites.filter(s => s.region === "Africa")
+  const sortedAfricaSites = africaSites.sort((a,b) => sortByCountry(a,b))
+
+
   const siteDetailsRef = useRef()
 
   const AsiaTogg = () => {
@@ -46,6 +50,15 @@ const RegionList = ({ user }) => {
     )
   }
 
+  const AfricaTogg = () => {
+    return (
+      <div>
+        {sortedAfricaSites.map(c => <Country site={c} user={user} />)}
+      </div>
+    )
+  }
+
+
   return (
     <div style={regionContainer}>
       <h1 style={regionName}>Asia-Pacific</h1>
@@ -55,6 +68,10 @@ const RegionList = ({ user }) => {
       <h1 style={regionName}>Europe</h1>
       <Togglable buttonLabel="view europe" ref={siteDetailsRef} style={regionViewButton}>
         <EuropeTogg />
+      </Togglable>
+      <h1 style={regionName}>Africa</h1>
+      <Togglable buttonLabel="view africa" ref={siteDetailsRef} style={regionViewButton}>
+        <AfricaTogg />
       </Togglable>
     </div>
 

@@ -26,7 +26,7 @@ const LikeButton = React.forwardRef((props, ref) => {
     const indexCurr = props.site.userLiked.indexOf(likedList)
     //updatedSite is the parent site. This will have its liked status toggled
     //actually updatedUserLiked can simply use username: user.username and liked: true
-    const updatedUserLiked = { username: likedList?.username, liked: !likedList.liked}
+    const updatedUserLiked = { username: likedList?.username, liked: !likedList?.liked}
     props.site.userLiked[indexCurr] = updatedUserLiked
     const updatedSite = {...props.site, userLiked: props.site.userLiked}    
     props.updateSite(props.site.id, updatedSite)

@@ -75,6 +75,7 @@ export default LikedItem
 const likedContainer = {
   border: '2px solid',
   overflowX: 'hidden',
+  overflowY: 'auto',
   // display: 'flex'
 }
 
