@@ -16,7 +16,7 @@ describe('<Site />', () => {
       
         const site = {
           title: 'Kafka on the Shore',
-          author: 'Haruki Murakami',
+          country: 'Haruki Murakami',
           url: 'https://en.wikipedia.org/wiki/Kafka_on_the_Shore',
           likes: 57,
           user: user
@@ -28,10 +28,10 @@ describe('<Site />', () => {
         
     })
 
-    test('renders title and author but not url or likes', () => {
+    test('renders title and country but not url or likes', () => {
 
         //5.13
-        const title = component.container.querySelector('.site-title-author')
+        const title = component.container.querySelector('.site-title-country')
         expect(title).toHaveTextContent(
           'Kafka on the Shore'
         )

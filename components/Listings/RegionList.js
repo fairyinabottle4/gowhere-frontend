@@ -10,10 +10,10 @@ import { FormHelperText } from '@material-ui/core'
 
 const RegionList = ({ user }) => {
   const sortByCountry = (a,b) => {
-    if (a.author < b.author) {
+    if (a.country < b.country) {
       return -1
     }
-    if (a.author > b.author) {
+    if (a.country > b.country) {
       return 1
     } 
     return 0

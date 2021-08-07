@@ -28,7 +28,7 @@ const Search = ({user}) => {
       (listing) =>
         listing.title.toLowerCase().includes(searchInput.toLowerCase())
         || listing.description.toLowerCase().includes(searchInput.toLowerCase())
-        || listing.author.toLowerCase().includes(searchInput.toLowerCase()))
+        || listing.country.toLowerCase().includes(searchInput.toLowerCase()))
 
   return (
     <div>

@@ -20,13 +20,13 @@ const Homepage = (props) => {
     <div>
       <h2>Where would you like to go today?</h2>
       <div style={likedStatsContainer}>
-        <p style={likedStats}>You have liked {likedPlaces.length} / 1144 places</p>
+        <p style={likedStats}>You have liked {likedPlaces?.length} / 1144 places</p>
         {likedPlaces.length === 0 ? <p>There's something for everyone here!</p> : 
             likedPlaces.length < 10 ? <p> Have you planned your next trip?</p>
             : <p>Woah explorer! Take it easy!</p>}
       </div>
       <div style={likedStatsContainer}>
-        <p style={likedStats}>You have visited {visitedPlaces.length} / 1144 places</p>
+        <p style={likedStats}>You have visited {visitedPlaces?.length} / 1144 places</p>
         {visitedPlaces.length === 0 ? <p>A great journey begins with a single step!</p>
             : visitedPlaces.length < 500 ? <p>Making good progress, traveller!</p> 
             : <p>You could write a book now!</p>}
@@ -57,6 +57,7 @@ const homeContainer = {
 const likeContainer = {
   border: '2px solid',
   backgroundColor: '#ffc4ff',
+  flexGrow: 1
 }
 
 const visitContainer = {

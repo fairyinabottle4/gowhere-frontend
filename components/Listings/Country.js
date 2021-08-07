@@ -13,11 +13,11 @@ const Country = React.forwardRef((props, ref) => {
   return (
     <div>
       <h1>
-        {props.site.author}
+        {props.site.country}
       </h1>
       <TogglableCountry 
-        buttonLabel={`view ${props.site.author}`} level="country" 
-        ref={countryRef} country={props.site.author}>
+        buttonLabel={`view ${props.site.country}`} level="country" 
+        ref={countryRef} country={props.site.country}>
         <Site site={props.site} user={props.user} ref={combinedRef} />
       </TogglableCountry>
     </div>
