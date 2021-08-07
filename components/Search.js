@@ -26,16 +26,28 @@ const Search = ({user}) => {
     filteredSites :
     filteredSites.filter(
       (listing) =>
-        listing.title.toLowerCase().includes(searchInput.toLowerCase()))
+        listing.title.toLowerCase().includes(searchInput.toLowerCase())
+        || listing.description.toLowerCase().includes(searchInput.toLowerCase())
+        || listing.author.toLowerCase().includes(searchInput.toLowerCase()))
 
   return (
     <div>
+      <h1 style={titleStyle}>Search from the entire list</h1>
       <TextField 
         id="filled-search" 
-        label="Search field" 
+        label="Search for a UNESCO World Heritage Site!" 
         type="search" 
         variant="outlined"
         onChange={onChangeText}
+        style={{
+          marginTop: '5%',
+          width: '100%',
+        }}
+        InputProps={{
+          style: {
+            color: 'red'
+          }
+        }}
         value={searchInput} />
       {searchInput.length === 0 ? null :
       <TableContainer component={Paper}>
@@ -58,3 +70,8 @@ const Search = ({user}) => {
 }
 
 export default Search
+
+const titleStyle = {
+  marginTop: '2em',
+  border: '2px solid red',
+}
