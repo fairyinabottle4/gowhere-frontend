@@ -1,4 +1,7 @@
 import image from '../res/display_pic.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom';
 
 const About = () => (
   <div>
@@ -39,6 +42,14 @@ const About = () => (
       src={image}
       height='400px'
       />
+    <div>
+      <a href="https://github.com/fairyinabottle4" target="_blank">
+        <FontAwesomeIcon icon={faGithub} size="4x" />
+      </a>
+      <a href="https://www.linkedin.com/in/keith-low-jun/" target="_blank">
+        <FontAwesomeIcon icon={faLinkedin} size="4x"/>
+      </a>
+    </div>
 
     <p style={paragraphText}>His name is Keith, currently stuck on a tiny island called Singapore, which he has not
       been able to leave for the past 18 months (and who knows when next). This little project of his
