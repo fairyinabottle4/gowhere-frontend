@@ -25,6 +25,7 @@ const About = () => (
     <ul>
       <li>Update the design of the website</li>
       <li>Update the site with the UNESCO's list of Intangible Cultural Heritage.</li>
+      <li>Make the website responsive to other screen types such as mobile, tablet</li>
     </ul>
     <p style={paragraphText}>
       The intangible cultural heritage list is less about places to go, but rather, about experiences
