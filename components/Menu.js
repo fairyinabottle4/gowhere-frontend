@@ -9,14 +9,12 @@ import { faSearch, faHome, faBuilding, faUser } from '@fortawesome/free-solid-sv
 const Menu = () => {
   const topNavStyle = {
     backgroundColor: '#4ba3c7',
-    border: '2px solid red',
     textAlign: 'center',
   }
 
   const linkStyle = {
     flex: 1,
     color: 'black',
-    border: '2px solid blue',
     fontSize: 24,
     marginLeft: '1em',
     marginRight: '1em',

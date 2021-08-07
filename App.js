@@ -54,7 +54,7 @@ const App = () => {
   
   return (
     <Router>
-      <Container>
+      <Container style={styles.container}>
         <div>
           {notification !== '' ? <Notification /> : null}
           {user === null ?
@@ -90,14 +90,19 @@ const App = () => {
   )
 }
 
+const styles = {
+  container: {
+    height: 1356,
+    backgroundColor: '#f5f5f5'
+  }
+}
+
 const topStyle = {
-  border: '2px solid red',
   display: 'flex',
   backgroundColor: '#81d4fa'
 }
 
 const headerStyle = {
-  border: '2px solid red',
   color: 'black',
   flexGrow: 1,
   fontSize: '24px',
@@ -105,7 +110,6 @@ const headerStyle = {
 }
 
 const usernameStyle = {
-  border: '2px solid red',
   paddingTop: '1em',
   fontFamily: 'Roboto'
 }
@@ -115,7 +119,6 @@ const logoutStyle = {
   fontFamily: 'Roboto',
   height: '50%',
   marginTop: '2em',
-  border: '2px solid red',
   textAlign: 'center',
   color: 'blue'
 }

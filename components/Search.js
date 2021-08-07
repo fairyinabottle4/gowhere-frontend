@@ -73,6 +73,5 @@ export default Search
 
 const titleStyle = {
   marginTop: '2em',
-  border: '2px solid red',
   fontFamily: "Roboto"
 }

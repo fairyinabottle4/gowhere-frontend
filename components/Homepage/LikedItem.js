@@ -72,7 +72,7 @@ const LikedItem = (props) => {
 export default LikedItem
 
 const likedContainer = {
-  border: '2px solid',
+  borderTop: '2px solid',
   overflowX: 'hidden',
   overflowY: 'auto',
 }

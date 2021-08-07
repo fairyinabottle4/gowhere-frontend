@@ -72,10 +72,10 @@ const VisitedItem = (props) => {
 export default VisitedItem
 
 const visitedContainer = {
-  border: '2px solid',
+  borderTop: '2px solid',
+  borderLeft: '2px solid',
   overflowX: 'hidden',
   overflowY: 'auto',
-  // display: 'flex'
 }
 
 const name = {

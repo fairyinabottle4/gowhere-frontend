@@ -35,11 +35,9 @@ const siteContainer = {
 }
 
 const siteNameContainer = {
-  border: '2px solid yellow',
 }
 
 const siteName = {
-  border: '2px solid purple',
   fontSize: '20px',
 }
 

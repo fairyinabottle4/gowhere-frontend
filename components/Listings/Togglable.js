@@ -38,6 +38,5 @@ export default Togglable
 
 
 const container = {
-  border: '2px solid red',
   backgroundColor: '#f5f5f5'
 }

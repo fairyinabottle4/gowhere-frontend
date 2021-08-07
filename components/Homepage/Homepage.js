@@ -50,11 +50,10 @@ export default Homepage
 
 const homeContainer = {
   display: 'flex',
-  border: '2px solid',
+  border: '4px solid',
 }
 
 const likeContainer = {
-  border: '2px solid',
   backgroundColor: '#ffc4ff',
   flexGrow: 1
 }
@@ -64,7 +63,6 @@ const titleStyle = {
 }
 
 const visitContainer = {
-  border: '2px solid red',
   backgroundColor: '#66ffa6',
   flexGrow: 1
 }

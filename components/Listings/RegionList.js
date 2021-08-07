@@ -77,12 +77,10 @@ const RegionList = ({ user }) => {
 export default RegionList
 
 const regionContainer = {
-  border: '2px solid green',
   backgroundColor: '#c2c2c2'
 }
 
 const regionName = {
-  border: '2px solid red',
   backgroundColor: '#c2c2c2',
   fontFamily: "Roboto"
 }
