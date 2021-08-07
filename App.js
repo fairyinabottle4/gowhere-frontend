@@ -99,18 +99,20 @@ const topStyle = {
 const headerStyle = {
   border: '2px solid red',
   color: 'black',
-  fontStyle: 'italic',
   flexGrow: 1,
-  fontSize: '24px'
+  fontSize: '24px',
+  fontFamily: 'Roboto',
 }
 
 const usernameStyle = {
   border: '2px solid red',
-  paddingTop: '1em'
+  paddingTop: '1em',
+  fontFamily: 'Roboto'
 }
 
 const logoutStyle = {
   backgroundColor: '#81d4fa',
+  fontFamily: 'Roboto',
   height: '50%',
   marginTop: '2em',
   border: '2px solid red',

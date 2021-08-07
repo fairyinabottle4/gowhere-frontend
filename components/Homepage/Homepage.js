@@ -5,6 +5,9 @@ import VisitedItem from './VisitedItem'
 import { Button } from '@material-ui/core'
 import { initializeUsers } from '../../reducers/usersReducer'
 import { setNotification } from '../../reducers/notifReducer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
+
 
 const Homepage = (props) => {
   const currUser = props.user
@@ -12,13 +15,12 @@ const Homepage = (props) => {
   //find the id of the current user
   const userLikes = users?.jsonUser?.find(n => n.username === currUser.username)
   const userVisited = users?.jsonVisited?.find(n => n.username === currUser.username)
-
-  const likedPlaces = userLikes?.liked
-  const visitedPlaces = userVisited?.visited
+  const likedPlaces = userLikes?.liked ?? []
+  const visitedPlaces = userVisited?.visited ?? []
 
   return (
     <div>
-      <h2>Where would you like to go today?</h2>
+      <h2 style={titleStyle}>Where would you like to go today?</h2>
       <div style={likedStatsContainer}>
         <p style={likedStats}>You have liked {likedPlaces?.length} / 1144 places</p>
         {likedPlaces.length === 0 ? <p>There's something for everyone here!</p> : 
@@ -34,12 +36,12 @@ const Homepage = (props) => {
       <div style={homeContainer}>
         <div style={likeContainer}>
           <div>
-            <h2 style={likedPlacesTitle}>Places I like</h2>
+            <h2 style={likedPlacesTitle}>Places I like <FontAwesomeIcon icon={faHeart}/></h2>
           </div>
           {likedPlaces?.map(place => <LikedItem id={place.id} likedPlace={place} user={currUser}/>)}
         </div>
         <div style={visitContainer}>
-          <h2 style={visitedPlacesTitle}>Places I visited</h2>
+          <h2 style={visitedPlacesTitle}>Places I visited <FontAwesomeIcon icon={faCheckSquare}/></h2>
           {visitedPlaces?.map(place => <VisitedItem id={place.id} visitedPlace={place} user={currUser} />)}
         </div>
       </div>
@@ -60,6 +62,10 @@ const likeContainer = {
   flexGrow: 1
 }
 
+const titleStyle = {
+  fontFamily: "Roboto"
+}
+
 const visitContainer = {
   border: '2px solid red',
   backgroundColor: '#66ffa6',
@@ -68,12 +74,14 @@ const visitContainer = {
 
 const likedPlacesTitle = {
   backgroundColor: '#ce93d8',
+  fontFamily: "Roboto",
   textAlign: 'center'
 }
 
 const visitedPlacesTitle = {
   textAlign: 'center',
-  backgroundColor: '#00e676'
+  backgroundColor: '#00e676',
+  fontFamily: "Roboto"
 }
 
 const likedStatsContainer = {
@@ -81,7 +89,8 @@ const likedStatsContainer = {
 }
 
 const likedStats = {
-  marginRight: '10em'
+  marginRight: '10em',
+  fontFamily: "Roboto"
 }
 
 const likedStatsComments = {
