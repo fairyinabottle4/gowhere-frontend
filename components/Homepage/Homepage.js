@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import LikedItem from './LikedItem'
 import VisitedItem from './VisitedItem'
-import { Button } from '@material-ui/core'
-import { initializeUsers } from '../../reducers/usersReducer'
-import { setNotification } from '../../reducers/notifReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 

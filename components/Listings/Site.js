@@ -5,11 +5,6 @@ import PropTypes from 'prop-types'
 import {
   TableCell,
 } from '@material-ui/core'
-import {
-  BrowserRouter as Router,
-  Link,
-} from "react-router-dom"
-
 
 const Site = React.forwardRef((props, ref) => {
   const siteRef = useRef()

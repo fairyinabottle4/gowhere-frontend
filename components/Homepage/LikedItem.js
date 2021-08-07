@@ -22,7 +22,6 @@ const LikedItem = (props) => {
     try {
       const updatedSite = await siteService.update(siteId, siteObject)
       dispatch(toggleStatus(siteId, updatedSite))
-      // dispatch(setNotification(`One like added to ${updatedSite.title}`))
     } catch (exception) {
       dispatch(setNotification("Could not update site"))
     }

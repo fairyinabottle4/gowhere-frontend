@@ -1,7 +1,6 @@
-import { green } from "@material-ui/core/colors"
 import {
-    BrowserRouter as Router, Link,
-  } from "react-router-dom"
+  BrowserRouter as Router, Link,
+} from "react-router-dom"
   
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faHome, faBuilding, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -22,7 +21,10 @@ const Menu = () => {
     marginLeft: '1em',
     marginRight: '1em',
     fontFamily: 'Roboto',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    hover: {
+      color: 'red'
+    }
   }
 
   return (

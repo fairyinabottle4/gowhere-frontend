@@ -1,12 +1,7 @@
 import React, {useRef} from 'react'
 import Togglable from './Togglable'
-import SiteList from './SiteList'
-import Site from './Site'
-import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import Country from './Country'
-import { FormHelperText } from '@material-ui/core'
-
 
 const RegionList = ({ user }) => {
   const sortByCountry = (a,b) => {

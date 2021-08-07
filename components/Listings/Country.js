@@ -1,11 +1,6 @@
 import React, {useRef} from 'react'
 import TogglableCountry from './TogglableCountry'
-import Site from './Site'
-import {
-    TableCell,
-  } from '@material-ui/core'
-  
-
+import Site from './Site'  
 
 const Country = React.forwardRef((props, ref) => {
   const countryRef = useRef()

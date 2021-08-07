@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import siteService from '../../services/sites'
 import { useDispatch } from 'react-redux'
-import { toggleStatus, initSites } from '../../reducers/sitesReducer'
-import { setNotification } from '../../reducers/notifReducer'
 import { initializeUsers } from '../../reducers/usersReducer'
-import { Button, Link } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 
 
 const VisitButton = ({site, user, updateSite}) => {
@@ -21,7 +18,6 @@ const VisitButton = ({site, user, updateSite}) => {
       updateSite(site.id, updatedSite)  
     }  
   },[])
-  // const visited = visitedList?.visited
 
   const [visited, setVisited] = useState(visitedList?.visited)
 
@@ -33,9 +29,7 @@ const VisitButton = ({site, user, updateSite}) => {
     updateSite(site.id, updatedSite)
     const childSite = {...site, parent: updatedSite, opcode: 200}
     const newSite = await siteService.create(childSite)
-    // dispatch(createSite(newSite))
     dispatch(initializeUsers())
-    // dispatch(initSites())
     setVisited(!visited)
   }
 
