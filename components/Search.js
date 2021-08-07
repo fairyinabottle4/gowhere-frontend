@@ -37,19 +37,20 @@ const Search = ({user}) => {
         variant="outlined"
         onChange={onChangeText}
         value={searchInput} />
+      {searchInput.length === 0 ? null :
       <TableContainer component={Paper}>
         <Table>
           <TableBody>
               {sitesToShow.map(site => 
               <TableRow key={site.id}>
-                  <Site site={site} user={user} />
+                  <Site site={site} user={user} search={true} />
               </TableRow>
               
               )}
           </TableBody>
         </Table>
       </TableContainer>
-
+      }
     </div>
       
   )

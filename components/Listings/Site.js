@@ -13,15 +13,17 @@ import {
 
 const Site = React.forwardRef((props, ref) => {
   const siteRef = useRef()
-  const combinedRef = ref.concat(siteRef)
-  console.log(props.site)
+  let combinedRef
+  if (!props.search) {
+    combinedRef = ref.concat(siteRef)
+  }
   return (
   <div style={siteContainer}>
     <TableCell style={siteNameContainer}>
       <p style={siteName}>{props.site.title} </p>
       <TogglableSite buttonLabel="view site" level="detail" ref={siteRef} title={props.site.title}>
         <SiteDetails key={props.site.id} site={props.site} user={props.user} 
-          ref={combinedRef} />
+          ref={props.search ? null : combinedRef} />
       </TogglableSite>
     </TableCell>
   </div>)  
