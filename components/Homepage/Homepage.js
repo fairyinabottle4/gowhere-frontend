@@ -44,7 +44,6 @@ const homeContainer = {
 
 const likeContainer = {
   border: '2px solid',
-  flexGrow: 0.5
 }
 
 const visitContainer = {

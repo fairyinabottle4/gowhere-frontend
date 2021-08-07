@@ -61,8 +61,8 @@ const LikedItem = (props) => {
   }
 
   return (
-    <div>
-      <p>{likedPlace.title}</p>
+    <div style={likedContainer}>
+      <p style={title}>{likedPlace.title}</p>
       <Button onClick={handleDelete} size='small'
         variant='contained' color={'secondary'}>remove from likes
       </Button>
@@ -74,5 +74,10 @@ export default LikedItem
 
 const likedContainer = {
   border: '2px solid',
-  overflow: 'auto'
+  overflowX: 'hidden',
+  // display: 'flex'
+}
+
+const title = {
+  flexWrap: 'wrap'
 }
