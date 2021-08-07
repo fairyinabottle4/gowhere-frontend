@@ -1,17 +1,13 @@
-import React, { useEffect, useRef } from 'react'
-import SiteList from './components/Listings/SiteList'
-import Regions from './components/Listings/RegionList'
+import React, { useEffect } from 'react'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import Menu from './components/Menu'
 import About from './components/About'
-import Togglable from './components/Listings/Togglable'
 import siteService from './services/sites'
 import Homepage from './components/Homepage/Homepage'
 import { useDispatch, useSelector } from 'react-redux'
 import Search from './components/Search'
 import background from './res/machu_pichu.jpg'
-
 import {
   BrowserRouter as Router,
   Switch, Route, Link,

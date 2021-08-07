@@ -1,7 +1,6 @@
 import image from '../res/display_pic.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { Link } from 'react-router-dom';
 
 const About = () => (
   <div>
