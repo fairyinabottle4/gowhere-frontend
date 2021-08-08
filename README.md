@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Unesco-Gowhere
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend repository for the Unesco-Gowhere webapp. The backend repo can be found [here](https://github.com/fairyinabottle4/gowhere-backend)
+The webapp can be found [here](https://unesco-gowhere.herokuapp.com/)
 
-## Available Scripts
+* Unesco-Gowhere is a desktop webapp for travellers to explore famous UNESCO World Heritage Sites
+* Sites are displayed in the **Sites** tab where they can find explore all 1000+ UNESCO World Heritage Sites. 
+* Sites are grouped into 5 different regions, which contain a list of countries in the region. Under each country, the user can see the Heritage Sites in that country. 
+* For each site, users can indicate whether they want to visit (i.e. "like") a place, or whether they have visited (i.e. "visited") that particular place
+* Liked and Visited places will show up on the **Home** tab.
+* They can also search for the sites in the **Search** tab where users can key in the site name or any relevant keyword. 
 
-In the project directory, you can run:
+## TO LOGIN 
 
-### `npm start`
+I have not enabled the ability to create new user accounts to prevent overwhelming my database and server. I have provided a sample user account below for demonstration and experimentation purposes.
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**TO LOGIN**, username: **user1**, password: **password**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you would like to receive your own personal account, do reach out to me and I will enable it for you. 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
