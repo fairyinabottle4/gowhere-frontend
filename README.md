@@ -20,3 +20,50 @@ I have not enabled the ability to create new user accounts to prevent overwhelmi
 If you would like to receive your own personal account, do reach out to me and I will enable it for you. 
 
 
+## Some screenshots
+
+Login page
+<br>
+<br>
+<br>
+<img src="./screenshots/login.png" alt="drawing" width="400"/>
+<br>
+<br>
+<br>
+Home page of the app
+<br>
+<br>
+<br>
+<img src="./screenshots/homepage.png" alt="drawing" width="400"/>
+<br>
+<br>
+<br>
+Individual listings
+<br>
+<br>
+<br>
+<img src="./screenshots/site_detail.png" alt="drawing" width="400"/>
+<br>
+<br>
+<br>
+Region view
+<br>
+<br>
+<br>
+<img src="./screenshots/region_view.png" alt="drawing" width="400"/>
+<br>
+<br>
+<br>
+Country view
+<br>
+<br>
+<br>
+<img src="./screenshots/country_view.png" alt="drawing" width="400"/>
+<br>
+<br>
+<br>
+Search page
+<br>
+<br>
+<br>
+<img src="./screenshots/search_page.png" alt="drawing" width="400"/>
