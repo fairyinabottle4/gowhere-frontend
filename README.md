@@ -26,7 +26,7 @@ Login page
 <br>
 <br>
 <br>
-<img src="./screenshots/login.png" alt="drawing" width="400"/>
+<img src="./screenshots/login_page.png" alt="drawing" width="800"/>
 <br>
 <br>
 <br>
@@ -34,7 +34,7 @@ Home page of the app
 <br>
 <br>
 <br>
-<img src="./screenshots/homepage.png" alt="drawing" width="400"/>
+<img src="./screenshots/home_page.png" alt="drawing" width="800"/>
 <br>
 <br>
 <br>
@@ -42,7 +42,7 @@ Individual listings
 <br>
 <br>
 <br>
-<img src="./screenshots/site_detail.png" alt="drawing" width="400"/>
+<img src="./screenshots/site_detail.png" alt="drawing" width="800"/>
 <br>
 <br>
 <br>
@@ -50,7 +50,7 @@ Region view
 <br>
 <br>
 <br>
-<img src="./screenshots/region_view.png" alt="drawing" width="400"/>
+<img src="./screenshots/region_view.png" alt="drawing" width="800"/>
 <br>
 <br>
 <br>
@@ -58,7 +58,7 @@ Country view
 <br>
 <br>
 <br>
-<img src="./screenshots/country_view.png" alt="drawing" width="400"/>
+<img src="./screenshots/country_view.png" alt="drawing" width="800"/>
 <br>
 <br>
 <br>
@@ -66,4 +66,4 @@ Search page
 <br>
 <br>
 <br>
-<img src="./screenshots/search_page.png" alt="drawing" width="400"/>
+<img src="./screenshots/search_page.png" alt="drawing" width="800"/>
