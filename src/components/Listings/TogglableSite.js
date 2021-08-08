@@ -6,9 +6,6 @@ const TogglableSite = React.forwardRef((props, ref) => {
     
   const [visible, setVisible] = useState(false)
 
-  console.log(props.level)
-  console.log(visible)
-
   const hideWhenVisible = { display: visible ? 'none' : '' }
   const showWhenVisible = { 
     display: visible ? '' : 'none',

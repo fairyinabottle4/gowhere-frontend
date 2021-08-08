@@ -8,12 +8,12 @@ const Country = React.forwardRef((props, ref) => {
   return (
     <div>
       <h1 style={countryName}>
-        {props.site.country}
+        {props.country}
       </h1>
       <TogglableCountry 
-        buttonLabel={`view ${props.site.country}`} level="country" 
-        ref={countryRef} country={props.site.country}>
-        <Site site={props.site} user={props.user} ref={combinedRef} />
+        buttonLabel={`view ${props.country}`} level="country" 
+        ref={countryRef} country={props.country}>
+        {props.sites.map(s => <Site site={s} user={props.user} ref={combinedRef} /> )}
       </TogglableCountry>
     </div>
   )

@@ -18,7 +18,7 @@ const Togglable = React.forwardRef((props, ref) => {
       <div style={showWhenVisible}>
         {props.children}
         <Button size='small' variant='contained' color='secondary' 
-                onClick={toggleVisibility}>{props.buttonLabel === "view asia-pacific" ? "hide asia-pacific" : "cancel"}
+                onClick={toggleVisibility}>{props.buttonLabel === `view ${props.region}` ? `hide ${props.region}` : "cancel"}
         </Button>
       </div>
       <div style={hideWhenVisible}>
