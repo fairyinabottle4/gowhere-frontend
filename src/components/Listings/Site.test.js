@@ -15,59 +15,56 @@ describe('<Site />', () => {
         }  
       
         const site = {
-          title: 'Kafka on the Shore',
-          country: 'Haruki Murakami',
-          url: 'https://en.wikipedia.org/wiki/Kafka_on_the_Shore',
-          likes: 57,
-          user: user
+          title: 'Ha Long Bay',
+          url: 'https://whc.unesco.org/en/list/672',
+          country: "Vietnam",
+          region: "Asia-Pacific",
+          description: "Ha Long Bay, in the Gulf of Tonkin, includes some 1,600 islands and islets, forming a spectacular seascape of limestone pillars. Because of their precipitous nature, most of the islands are uninhabited and unaffected by a human presence. The site's outstanding scenic beauty is complemented by its great biological interest.",
+          userLiked: [],
+          userVisited: [],
+          parent: null,
+          imageUrl: "https://whc.unesco.org/uploads/thumbs/site_0672_0002-500-335-20151105164131.jpg"
         }
             
         component = render(
-            <Site site={site} updateSite={mockUpdateSite} deleteSite={mockDeleteSite} />
+            <Site site={site} user={user}/>
         )
         
     })
 
-    test('renders title and country but not url or likes', () => {
+    test('renders only the region', () => {
 
         //5.13
-        const title = component.container.querySelector('.site-title-country')
-        expect(title).toHaveTextContent(
-          'Kafka on the Shore'
+        const entry = component.container.querySelector('.site')
+        expect(entry).toHaveTextContent(
+          'Ha Long Bay'
         )
-        expect(title).toHaveTextContent(
-          'Haruki Murakami'
+        expect(entry).not.toHaveTextContent(
+          'Asia-Pacific'
         )
-        expect(title).not.toHaveTextContent(
-          'https://en.wikipedia.org/wiki/Kafka_on_the_Shore'
-        )
-        expect(title).not.toHaveValue(
-            57
+        expect(entry).not.toHaveTextContent(
+          "Vietnam"
         )
       })
       
-      test('clicking the button shows url and likes', () => {
+      test('clicking the button shows site details', () => {
           
-          const button = component.getByText('view')
+          const button = component.getByText('View Ha Long Bay')
           fireEvent.click(button)
       
-          const details = component.container.querySelector('.site-details')
+          const details = component.container.querySelector('.site-description')
           expect(details).toHaveTextContent(
-              'https://en.wikipedia.org/wiki/Kafka_on_the_Shore'
-          )
-          expect(details).toHaveTextContent(
-              57
+              "Ha Long Bay, in the Gulf of Tonkin, includes some 1,600 islands and islets, forming a spectacular seascape of limestone pillars. Because of their precipitous nature, most of the islands are uninhabited and unaffected by a human presence. The site's outstanding scenic beauty is complemented by its great biological interest.",
           )
       })
 
-      test('clicking the like button twice invokes the handler twice', () => {
-        const button = component.getByText('view')
+      test('clicking the like button twice invokes the handler once', () => {
+        const button = component.getByText('View Ha Long Bay')
         fireEvent.click(button)
 
-         const like_button = component.getByText('like')
+         const like_button = component.getByText('Like')
          fireEvent.click(like_button)
-         fireEvent.click(like_button)
-         expect(mockUpdateSite.mock.calls).toHaveLength(2)
+         expect(mockUpdateSite.mock.calls).toHaveLength(1)
       })
     
       

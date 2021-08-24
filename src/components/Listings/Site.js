@@ -18,7 +18,7 @@ const Site = React.forwardRef((props, ref) => {
       <p style={siteName}>{props.site.title} </p>
       <TogglableSite buttonLabel="view site" level="detail" ref={siteRef} title={props.site.title}>
         <SiteDetails key={props.site.id} site={props.site} user={props.user} 
-          ref={props.search ? null : combinedRef} />
+          ref={props.search ? null : combinedRef} className="site" />
       </TogglableSite>
     </TableCell>
   </div>)  

@@ -28,7 +28,7 @@ const SiteDetails = ({site, user}) => {
         <VisitButton user={user} site={site} updateSite={updateSite} />
       </h2>
       <h3>Description</h3>
-      <p>{site.description}</p>
+      <p className='site-description'>{site.description}</p>
       <img src={site.imageUrl} alt={"Image could not be loaded"} />
     </div>
   )
